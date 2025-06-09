@@ -4,6 +4,8 @@ import { Trans, useTranslation } from 'react-i18next';
 
 import { Link, useSearchParams } from "react-router";
 
+import Settings from "./settings";
+
 function luhnCheck(num: string) {
     let sum = 0;
     let alternate = false;
@@ -144,7 +146,7 @@ export function HomePage() {
                         <img src="/favicon.svg" alt="logo" className="h-12 w-12 inline" />
                         <a className="ps-2 font-bold text-xl" href="/about.html">{t('title')}</a>
                     </div>
-                    <PiGear size={24} />
+                    <Settings />
                 </div>
             </div>
             <div className="flex flex-col grow justify-center items-center pb-7">

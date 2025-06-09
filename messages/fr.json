@@ -9,6 +9,7 @@
     "footer": "Propulsé par <DevLink>Fiserv</DevLink>",
     "placeholder": "Nombre à valider",
     "prompt": "Nombre",
+    "settings": "Paramètres",
     "title": "Calculatrice de Luhn",
     "valid_luhn": "Youpi ! Ce nombre passe la validation de Luhn !"
 }

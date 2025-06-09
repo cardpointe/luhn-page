@@ -9,6 +9,13 @@
     "footer": "Powered by <DevLink>Fiserv</DevLink>",
     "placeholder": "Number to validate",
     "prompt": "Number",
+    "settings": "Settings",
+    "settings_mode": "Light/Dark Mode",
+    "settings_mode_light": "Light",
+    "settings_mode_dark": "Dark",
+    "settings_mode_auto": "Auto",
+    "settings_mode_current": "{{mode}} (current)",
+    "settings_close": "Close",
     "title": "Luhn Calculator",
     "valid_luhn": "Yay! This number passes Luhn validation!"
 }
