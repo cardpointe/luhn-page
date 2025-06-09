@@ -10,6 +10,7 @@
     "placeholder": "Nombre à valider",
     "prompt": "Nombre",
     "settings": "Paramètres",
+    "settings_length": "Combien de chiffres",
     "settings_locale": "Langue",
     "settings_locale_en": "Anglais (English)",
     "settings_locale_es": "Espagnol (Español)",

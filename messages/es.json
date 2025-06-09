@@ -10,6 +10,7 @@
     "placeholder": "Número a validar",
     "prompt": "Número",
     "settings": "Configuración",
+    "settings_length": "Longitud",
     "settings_locale": "Idioma",
     "settings_locale_en": "Inglés (English)",
     "settings_locale_es": "Español",

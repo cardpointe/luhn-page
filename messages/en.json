@@ -10,6 +10,7 @@
     "placeholder": "Number to validate",
     "prompt": "Number",
     "settings": "Settings",
+    "settings_length": "Number of digits",
     "settings_locale": "Language",
     "settings_locale_en": "English",
     "settings_locale_es": "Spanish (Español)",

@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import Cookies from 'js-cookie';
 
 import { locales } from '../i18n';
+import { useSearchParams } from 'react-router';
 
 export type Mode = (typeof modes)[number];
 
@@ -53,8 +54,12 @@ function saveMode(theMode: Mode) {
 export default function Settings() {
     const { t, i18n } = useTranslation(); 
 
+    const [searchParams, setSearchParams] = useSearchParams();
+
     const [currentMode, setMode] = React.useState('auto' as Mode);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+    const [len, setLen] = React.useState(parseInt(searchParams.get("len") || "16"));
 
     const open = Boolean(anchorEl);
 
@@ -81,6 +86,7 @@ export default function Settings() {
         (theDialog as HTMLDialogElement).close();
     };
 
+
     const localeComparator = (a: string, b: string) => t(`settings_locale_${a}`).localeCompare(t(`settings_locale_${b}`));
     const sortedLocales = [...locales].sort(localeComparator);
 
@@ -105,6 +111,28 @@ export default function Settings() {
             >
                 <div className="modal-box w-75 flex flex-col gap-0 p-0">
                     <span className="p-3 text-xl font-bold border-b border-neutral/50">{t('settings')}</span>
+
+                    <div className="p-3">
+                        <div className="font-bold pb-2">{t('settings_length')}</div>
+                        <div className="flex flex-row items-center ps-3 gap-3">
+                            <span className="font-mono">{len < 10 ? ' ' : ''}{len}</span>
+                        <input id="test" type="range" min="4" max="20" value={len} className="range [--range-fill:0]"
+                        onChange={(e) => { 
+                            setLen(parseInt(e.target.value));
+
+                            setSearchParams((p) => {
+                                if (parseInt(e.target.value) == 16 ) {
+                                    p.delete("len");
+                                } else {
+                                    p.set("len", e.target.value);
+                                }
+                                return p;
+                            });
+                        }}
+                        />
+                        </div>
+                    </div>
+
                     <div className="p-3">
                         <div className="font-bold pb-2">{t('settings_locale')}</div>
                         {sortedLocales.map((locale) => (
@@ -120,6 +148,7 @@ export default function Settings() {
                             </div>
                         ))}
                     </div>
+
                     <div className="p-3">
                         <div className="font-bold pb-2">{t('settings_mode')}</div>
                         {modeItems.map((option) => (
