@@ -22,6 +22,7 @@ function luhnCheck(num: string) {
 }
 
 function luhnGenerate(len: number, filler: () => string, num: string) {
+    console.log(`luhnGenerate1(${len}, "${num}")`);
     if (num.length > len - 1) {
         num = num.slice(0, len - 1);
     } else if (num.length < len - 1) {
@@ -29,11 +30,13 @@ function luhnGenerate(len: number, filler: () => string, num: string) {
             num += filler();
         }
     }
+    console.log(`luhnGenerate2(${len}, "${num}")`);
     for (let i = 0; i < 10; i++) {
         if (luhnCheck(num + i.toString())) {
             return num + i.toString();
         }
     }
+    console.log(`Unable to generate valid number from "${num}" with length ${len}`);
     return "";
 }
 
@@ -56,14 +59,19 @@ type ExamplesProps = {
     random: boolean,
 }
 
+function addTimestamp() {
+    return ""; //`-${new Date().toISOString()}`
+}
+
 export function Examples({ len, target, random }: ExamplesProps) {
 
-    const examples:string[] = [];
+    let examples:string[] = [];
+    console.log(`strt len: ${examples.length}`);
 
     if (target.length >= len - 1) {
         const valid = luhnGenerate(len, () => "0", target);
         if (valid != target) {
-            examples.push(valid);
+            examples.push(valid + addTimestamp());
         }
     }
 
@@ -72,14 +80,21 @@ export function Examples({ len, target, random }: ExamplesProps) {
     }
 
     while (examples.length < 5) {
-        if (target.length == 0 || target.length >= len - 1) {
+        let newNum:string;
+        if (target.length == 0) {
             const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
-            examples.push(luhnGenerate(len, random ? randomDigit : () => "0", prefix));
+            newNum = luhnGenerate(len, random ? randomDigit : () => "0", prefix) + addTimestamp();
         } else {
-            examples.push(luhnGenerate(len, random ? randomDigit : () => (examples.length - 1).toString(), target));
+            newNum = luhnGenerate(len, random ? randomDigit : () => (examples.length).toString(), target) + addTimestamp();
         }
+        if (!examples.includes(newNum)) {
+            examples.push(newNum);
+        } else {
+            console.log(`skipping dup ${newNum}`);
+        }
+        console.log(`incr len: ${examples.length} (${newNum})`);
     }
-
+    console.log(`end len: ${examples.length} ${JSON.stringify(examples)} ${new Date().toISOString()}`);
 
     return (
         <ul>
@@ -96,7 +111,10 @@ export function HomePage() {
     const [searchParams, setSearchParams] = useSearchParams();
 
     const slen = searchParams.get("len");
-    const len = slen ? parseInt(slen) : 16;
+    let len = slen ? parseInt(slen) : 16;
+    if (len < 4) {
+        len = 4;
+    }
     const srandom = searchParams.get("random");
     const random = srandom ? srandom === "1" : false;
 
