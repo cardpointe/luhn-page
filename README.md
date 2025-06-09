@@ -3,33 +3,20 @@
 An attractive and ergonomic replacement for random Luhn utility pages ([example](http://www.ee.unb.ca/cgi-bin/tervo/luhn.pl))
 
 
-## Basics
+## Credits
 
-- [ ] verifies LUHN for a given number
-- [ ] empty: show some examples
-- [ ] if len < 16, shows some valid values (Configurable: either random or zero-filled)
-- [ ] updates automatically as you type (no need to submit form)
-- [ ] if invalid, show the number that passes by updating the last digit
-- [ ] configurable length (default=16)
+[![DaisyUI](https://www.vectorlogo.zone/logos/daisyui/daisyui-ar21.svg)](https://daisyui.com/ "HTML/CSS Framework")
+[![ESLint](https://www.vectorlogo.zone/logos/eslint/eslint-ar21.svg)](https://eslint.org/ "Linting")
+[![Git](https://www.vectorlogo.zone/logos/git-scm/git-scm-ar21.svg)](https://git-scm.com/ "Version control")
+[![Github](https://www.vectorlogo.zone/logos/github/github-ar21.svg)](https://github.com/ "Code hosting")
+[![Google Fonts](https://www.vectorlogo.zone/logos/google_fonts/google_fonts-ar21.svg)](https://fonts.google.com/ "Font hosting")
+[![Node.js](https://www.vectorlogo.zone/logos/nodejs/nodejs-ar21.svg)](https://nodejs.org/ "Application Server")
+[![npm](https://www.vectorlogo.zone/logos/npmjs/npmjs-ar21.svg)](https://www.npmjs.com/ "JS Package Management")
+[![react.js](https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.svg)](https://reactjs.org/ "UI Framework")
+[![React Router](https://www.vectorlogo.zone/logos/reactrouter/reactrouter-ar21.svg)](https://reactrouter.com/ "React framework")
+[![SVG Repo](https://www.vectorlogo.zone/logos/svgrepo/svgrepo-ar21.svg)](https://www.svgrepo.com/ "Icon")
+[![TypeScript](https://www.vectorlogo.zone/logos/typescriptlang/typescriptlang-ar21.svg)](https://www.typescriptlang.org/ "Programming Language")
+[![VectorLogoZone](https://www.vectorlogo.zone/logos/vectorlogozone/vectorlogozone-ar21.svg)](https://www.vectorlogo.zone/ "Logos")
 
-## Features
-
-- [ ] copy to clipboard for input and examples
-- [ ] responsive: mobile-friendly
-- [ ] updates URL w/number as query param (i.e. sharable URLs)
-- [ ] light/dark mode support
-- [ ] translations: English and French (ask for contributions for others)
-- [ ] Fiserv branding (favicon, title, "powered by" that links to dev docs, etc)
-- [ ] font: [Open Sans](https://fonts.google.com/specimen/Open+Sans)
-
-## Tech
-
-- [ ] static website
-- [ ] TypeScript
-- [ ] React
-- [ ] React-router
-- [ ] DaisyUI/Tailwind
-- [ ] CI job: build
-- [ ] CI job: translations up to date (=all have the same keys)
-- [ ] open source license (AGPL?) for source code (public repo at github.com/fiserv)
-- [ ] available on a public hostname (luhn.fiserv.com?)  [Domain Request Form](https://fiservcorp.sharepoint.com/sites/fuel-fiserv-brand/SitePages/Domain-Request-Form.aspx)
+* [nvm](https://nvm.sh/ "Node version manager")
+* [Open Sans](https://fonts.google.com/specimen/Open+Sans/about) - [Steve Matteson](https://mattesontypographics.com/)
