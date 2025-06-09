@@ -1,0 +1,13 @@
+{
+    "about": "Page d'aide pour calculer les nombres qui passent l'algorithme de validation de Luhn.",
+    "empty_hint": "Entrez un nombre de {{len}} chiffres",
+    "err_invalid": "Entrée invalide",
+    "err_not_luhn": "Ne passe pas la validation de Luhn",
+    "err_too_long": "Trop long : doit comporter {{len}} chiffres",
+    "err_too_short": "Trop court : doit comporter {{len}} chiffres",
+    "example_prompt": "Quelques nombres valides :",
+    "placeholder": "Nombre à valider",
+    "prompt": "Nombre",
+    "title": "Calculatrice de Luhn",
+    "valid_luhn": "Youpi ! Ce nombre passe la validation de Luhn !"
+}

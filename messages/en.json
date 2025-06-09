@@ -1,0 +1,13 @@
+{
+    "about": "Helper page for calculating numbers that pass the Luhn validation algorithm.",
+    "empty_hint": "Enter a {{len}} digit number",
+    "err_invalid": "Invalid input",
+    "err_not_luhn": "Does not pass Luhn validation",
+    "err_too_long": "Too long: needs to be {{len}} digits",
+    "err_too_short": "Too short: needs to be {{len}} digits",
+    "example_prompt": "Some valid numbers:",
+    "placeholder": "Number to validate",
+    "prompt": "Number",
+    "title": "Luhn Calculator",
+    "valid_luhn": "Yay! This number passes Luhn validation!"
+}

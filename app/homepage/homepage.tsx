@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { PiGear } from "react-icons/pi";
+import { useTranslation } from 'react-i18next';
 
 import { useSearchParams } from "react-router";
 
@@ -59,10 +60,6 @@ type ExamplesProps = {
     random: boolean,
 }
 
-function addTimestamp() {
-    return ""; //`-${new Date().toISOString()}`
-}
-
 export function Examples({ len, target, random }: ExamplesProps) {
 
     let examples:string[] = [];
@@ -71,21 +68,21 @@ export function Examples({ len, target, random }: ExamplesProps) {
     if (target.length >= len - 1) {
         const valid = luhnGenerate(len, () => "0", target);
         if (valid != target) {
-            examples.push(valid + addTimestamp());
+            examples.push(valid);
         }
     }
 
-    if (target.length >= len - 1) {
-        target = target.slice(0, len - 2);
+    if (target.length >= len - 2) {
+        target = target.slice(0, len - 3);
     }
 
     while (examples.length < 5) {
         let newNum:string;
         if (target.length == 0) {
             const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
-            newNum = luhnGenerate(len, random ? randomDigit : () => "0", prefix) + addTimestamp();
+            newNum = luhnGenerate(len, random ? randomDigit : () => "0", prefix);
         } else {
-            newNum = luhnGenerate(len, random ? randomDigit : () => (examples.length).toString(), target) + addTimestamp();
+            newNum = luhnGenerate(len, random ? randomDigit : () => (examples.length).toString(), target);
         }
         if (!examples.includes(newNum)) {
             examples.push(newNum);
@@ -108,6 +105,7 @@ export function Examples({ len, target, random }: ExamplesProps) {
 
 export function HomePage() {
 
+    const { t, i18n } = useTranslation(); 
     const [searchParams, setSearchParams] = useSearchParams();
 
     const slen = searchParams.get("len");
@@ -122,19 +120,19 @@ export function HomePage() {
     let hint = "";
     let hintColor = "";
     if (target.length == 0) {
-        hint = `Enter a ${len} digit number`;
+        hint = t('empty_hint', { len });
         hintColor = "text-neutral/33";
     } else if (target.length < len) {
-        hint = "Too short";
+        hint = t('err_too_short', { len });
         hintColor = "text-error";
     } else if (target.length > len) {
-        hint = "Too long";
+        hint = t('err_too_long', { len });
         hintColor = "text-error";
     } else if (luhnCheck(target)) {
-        hint = "Valid";
+        hint = t('valid_luhn');
         hintColor = "text-success";
     } else {
-        hint = `Invalid`;
+        hint = t('err_not_luhn');
         hintColor = "text-error";
     }
 
@@ -144,7 +142,7 @@ export function HomePage() {
                 <div className="max-w-3xl navbar bg-base-100 border-b border-neutral/10">
                     <div className="flex-1 flex items-center ps-2">
                         <img src="/favicon.svg" alt="logo" className="h-12 w-12 inline" />
-                        <a className="ps-2 font-bold text-xl" href="/about.html">Luhn Calculator</a>
+                        <a className="ps-2 font-bold text-xl" href="/about.html">{t('title')}</a>
                     </div>
                     <PiGear size={24} />
                 </div>
@@ -154,15 +152,15 @@ export function HomePage() {
                 <div className="max-w-xl min-w-lg bg-red-300 px-6">
 
                     <div role="alert" className="alert">
-                        <span>About blurb</span>
+                        <span>{t('about')}</span>
                     </div>
 
                     <fieldset className="fieldset">
-                        <legend className="fieldset-legend">Number</legend>
+                        <legend className="fieldset-legend">{t('prompt')}</legend>
                         <input
                             type="text"
                             className="input"
-                            placeholder="Start entering a credit card number"
+                            placeholder={t('placeholder')}
                             value={searchParams.get("n") ?? ""}
                             onChange={(e) => {
                                 const n = e.target.value.replace(/\D/g, "");
@@ -177,7 +175,7 @@ export function HomePage() {
                     </fieldset>
 
                     <div role="alert" className="alert flex flex-col items-start">
-                        Some valid numbers:
+                        {t('example_prompt')}
                         <Examples len={len} random={random} target={target} />
                     </div>
                 </div>
