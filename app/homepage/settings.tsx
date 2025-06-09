@@ -5,6 +5,8 @@ import { PiMoonBold, PiSunBold } from 'react-icons/pi';
 import { MdBrightness6, MdOutlinePhonelink } from "react-icons/md";
 import type { IconType } from 'react-icons';
 import { useEffect } from 'react';
+import Cookies from 'js-cookie';
+
 
 
 export type Mode = (typeof modes)[number];
@@ -24,6 +26,11 @@ const modeItems: ModeItem[] = [
 
 export function getCurrentMode(): Mode {
 
+    const savedMode = Cookies.get('mode') || 'auto';
+    if (savedMode && modes.includes(savedMode as Mode)) {
+        return savedMode as Mode;
+    }
+
     if (typeof window !== 'undefined') {
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             return 'dark';
@@ -36,10 +43,10 @@ export function getCurrentMode(): Mode {
 function saveMode(theMode: Mode) {
     if (!theMode || theMode == 'auto') {
         document.documentElement.removeAttribute('data-theme');
-        //deleteCookie('theme');
+        Cookies.remove('mode');
     } else {
         document.documentElement.setAttribute('data-theme', theMode);
-        //setCookie('theme', theMode);
+        Cookies.set('mode', theMode, { expires: 365 });
     }
 }
 

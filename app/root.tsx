@@ -6,6 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+import Cookies from "js-cookie";
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -32,8 +33,11 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+
+  const mode = Cookies.get('mode');
+
   return (
-    <html lang="en">
+    <html lang="en" data-theme={mode}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
