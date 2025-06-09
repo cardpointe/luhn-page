@@ -25,7 +25,6 @@ function luhnCheck(num: string) {
 }
 
 function luhnGenerate(len: number, filler: () => string, num: string) {
-    console.log(`luhnGenerate1(${len}, "${num}")`);
     if (num.length > len - 1) {
         num = num.slice(0, len - 1);
     } else if (num.length < len - 1) {
@@ -33,13 +32,11 @@ function luhnGenerate(len: number, filler: () => string, num: string) {
             num += filler();
         }
     }
-    console.log(`luhnGenerate2(${len}, "${num}")`);
     for (let i = 0; i < 10; i++) {
         if (luhnCheck(num + i.toString())) {
             return num + i.toString();
         }
     }
-    console.log(`Unable to generate valid number from "${num}" with length ${len}`);
     return "";
 }
 
@@ -65,7 +62,6 @@ type ExamplesProps = {
 export function Examples({ len, target, random }: ExamplesProps) {
 
     let examples:string[] = [];
-    console.log(`strt len: ${examples.length}`);
 
     if (target.length >= len - 1) {
         const valid = luhnGenerate(len, () => "0", target);
@@ -91,9 +87,7 @@ export function Examples({ len, target, random }: ExamplesProps) {
         } else {
             console.log(`skipping dup ${newNum}`);
         }
-        console.log(`incr len: ${examples.length} (${newNum})`);
     }
-    console.log(`end len: ${examples.length} ${JSON.stringify(examples)} ${new Date().toISOString()}`);
 
     return (
         <ul className="">
@@ -112,8 +106,12 @@ export function HomePage() {
 
     const slen = searchParams.get("len");
     let len = slen ? parseInt(slen) : 16;
-    if (len < 4) {
+    if (isNaN(len)) {
+        len = 16;
+    } else if (len < 4) {
         len = 4;
+    } else if (len > 20) {
+        len = 20;
     }
     const srandom = searchParams.get("random");
     const random = srandom ? srandom === "1" : false;
@@ -144,7 +142,7 @@ export function HomePage() {
                 <div className="max-w-3xl navbar bg-base-100">
                     <div className="flex-1 flex items-center ps-2">
                         <img src="/logo.svg" alt="logo" className="h-10 inline" />
-                        <a className="ps-2 font-bold text-xl" href="/about.html">{t('title')}</a>
+                        <span className="ps-4 font-bold text-xl">{t('title')}</span>
                     </div>
                     <Settings />
                 </div>

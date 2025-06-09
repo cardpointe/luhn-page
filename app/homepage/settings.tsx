@@ -59,7 +59,17 @@ export default function Settings() {
     const [currentMode, setMode] = React.useState('auto' as Mode);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
-    const [len, setLen] = React.useState(parseInt(searchParams.get("len") || "16"));
+    const slen = searchParams.get("len");
+    let parsedLen = slen ? parseInt(slen) : 16;
+    if (isNaN(parsedLen)) {
+        parsedLen = 16;
+    } else if (parsedLen < 4) {
+        parsedLen = 4;
+    } else if (parsedLen > 20) {
+        parsedLen = 20;
+    }
+
+    const [len, setLen] = React.useState(parsedLen);
 
     const open = Boolean(anchorEl);
 
