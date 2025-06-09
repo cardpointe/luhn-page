@@ -139,17 +139,19 @@ export function HomePage() {
     }
 
     return (
-        <div className="h-dvh bg-base-100">
-            <div className="navbar bg-base-100 border-b border-neutral/10">
-                <div className="flex-1 flex items-center ps-2">
-                    <img src="/favicon.svg" alt="logo" className="h-12 w-12 inline" />
-                    <a className="ps-2 font-bold text-xl" href="/about.html">Luhn Calculator</a>
+        <div className="h-dvh bg-base-100 flex flex-col">
+            <div className="flex justify-center bg-blue-200 border-b border-neutral/10">
+                <div className="max-w-3xl navbar bg-base-100 border-b border-neutral/10">
+                    <div className="flex-1 flex items-center ps-2">
+                        <img src="/favicon.svg" alt="logo" className="h-12 w-12 inline" />
+                        <a className="ps-2 font-bold text-xl" href="/about.html">Luhn Calculator</a>
+                    </div>
+                    <PiGear size={24} />
                 </div>
-                <PiGear size={24} />
             </div>
-            <div className="flex flex-col justify-center items-center h-full">
+            <div className="flex flex-col grow justify-center items-center bg-green-200">
 
-                <div>
+                <div className="max-w-xl min-w-lg bg-red-300 px-6">
 
                     <div role="alert" className="alert">
                         <span>About blurb</span>
