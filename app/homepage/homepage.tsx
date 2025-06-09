@@ -158,7 +158,7 @@ export function HomePage() {
                     <fieldset className="fieldset">
                         <legend className="fieldset-legend">{t('prompt')}</legend>
                         <input
-                            type="text"
+                            type="number"
                             className="input"
                             placeholder={t('placeholder')}
                             value={searchParams.get("n") ?? ""}
