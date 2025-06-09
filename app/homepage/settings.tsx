@@ -7,7 +7,7 @@ import type { IconType } from 'react-icons';
 import { useEffect } from 'react';
 import Cookies from 'js-cookie';
 
-
+import { locales } from '../i18n';
 
 export type Mode = (typeof modes)[number];
 
@@ -50,8 +50,6 @@ function saveMode(theMode: Mode) {
     }
 }
 
-
-
 export default function Settings() {
     const { t, i18n } = useTranslation(); 
 
@@ -83,6 +81,9 @@ export default function Settings() {
         (theDialog as HTMLDialogElement).close();
     };
 
+    const localeComparator = (a: string, b: string) => t(`settings_locale_${a}`).localeCompare(t(`settings_locale_${b}`));
+    const sortedLocales = [...locales].sort(localeComparator);
+
     return (
         <>
             <div
@@ -104,6 +105,21 @@ export default function Settings() {
             >
                 <div className="modal-box w-75 flex flex-col gap-0 p-0">
                     <span className="p-3 text-xl font-bold border-b border-neutral/50">{t('settings')}</span>
+                    <div className="p-3">
+                        <div className="font-bold pb-2">{t('settings_locale')}</div>
+                        {sortedLocales.map((locale) => (
+                            <div
+                                className="flex flex-row items-center ps-4 pb-1"
+                                key={locale}
+                                onClick={() => {
+                                    i18n.changeLanguage(locale);
+                                    Cookies.set('locale', locale, { expires: 365 });
+                                }}
+                            >
+                                <span className="ps-3">{t(`settings_locale_${locale}`)}</span>
+                            </div>
+                        ))}
+                    </div>
                     <div className="p-3">
                         <div className="font-bold pb-2">{t('settings_mode')}</div>
                         {modeItems.map((option) => (
