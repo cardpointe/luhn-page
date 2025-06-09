@@ -143,7 +143,7 @@ export function HomePage() {
             <div className="flex justify-center border-b border-neutral/10">
                 <div className="max-w-3xl navbar bg-base-100">
                     <div className="flex-1 flex items-center ps-2">
-                        <img src="/favicon.svg" alt="logo" className="h-12 w-12 inline" />
+                        <img src="/logo.svg" alt="logo" className="h-10 inline" />
                         <a className="ps-2 font-bold text-xl" href="/about.html">{t('title')}</a>
                     </div>
                     <Settings />
