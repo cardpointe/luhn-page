@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { PiGear } from "react-icons/pi";
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 
-import { useSearchParams } from "react-router";
+import { Link, useSearchParams } from "react-router";
 
 function luhnCheck(num: string) {
     let sum = 0;
@@ -179,6 +179,12 @@ export function HomePage() {
                         <Examples len={len} random={random} target={target} />
                     </div>
                 </div>
+            </div>
+            <div className="flex justify-center items-center text-xs text-neutral/50 my-4">
+            <Trans 
+                i18nKey="footer"
+                components={{ DevLink: <a className="px-1 font-bold" href='https://developer.fiserv.com/'/> }}
+            />
             </div>
         </div>
     );

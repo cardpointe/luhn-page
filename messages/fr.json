@@ -6,6 +6,7 @@
     "err_too_long": "Trop long : doit comporter {{len}} chiffres",
     "err_too_short": "Trop court : doit comporter {{len}} chiffres",
     "example_prompt": "Quelques nombres valides :",
+    "footer": "Propulsé par <DevLink>Fiserv</DevLink>",
     "placeholder": "Nombre à valider",
     "prompt": "Nombre",
     "title": "Calculatrice de Luhn",

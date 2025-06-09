@@ -6,6 +6,7 @@
     "err_too_long": "Too long: needs to be {{len}} digits",
     "err_too_short": "Too short: needs to be {{len}} digits",
     "example_prompt": "Some valid numbers:",
+    "footer": "Powered by <DevLink>Fiserv</DevLink>",
     "placeholder": "Number to validate",
     "prompt": "Number",
     "title": "Luhn Calculator",
