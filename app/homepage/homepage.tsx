@@ -94,9 +94,9 @@ export function Examples({ len, target, random }: ExamplesProps) {
     console.log(`end len: ${examples.length} ${JSON.stringify(examples)} ${new Date().toISOString()}`);
 
     return (
-        <ul>
+        <ul className="">
             {examples.map((n) => (
-                <li key={n} className="font-mono">{n}</li>
+                <li key={n} className="p-1 my-1 font-mono">{n}</li>
             ))}
         </ul>
     )
@@ -138,8 +138,8 @@ export function HomePage() {
 
     return (
         <div className="h-dvh bg-base-100 flex flex-col">
-            <div className="flex justify-center bg-blue-200 border-b border-neutral/10">
-                <div className="max-w-3xl navbar bg-base-100 border-b border-neutral/10">
+            <div className="flex justify-center border-b border-neutral/10">
+                <div className="max-w-3xl navbar bg-base-100">
                     <div className="flex-1 flex items-center ps-2">
                         <img src="/favicon.svg" alt="logo" className="h-12 w-12 inline" />
                         <a className="ps-2 font-bold text-xl" href="/about.html">{t('title')}</a>
@@ -147,11 +147,11 @@ export function HomePage() {
                     <PiGear size={24} />
                 </div>
             </div>
-            <div className="flex flex-col grow justify-center items-center bg-green-200">
+            <div className="flex flex-col grow justify-center items-center pb-7">
 
-                <div className="max-w-xl min-w-lg bg-red-300 px-6">
+                <div className="max-w-xl min-w-lg px-6">
 
-                    <div role="alert" className="alert">
+                    <div role="alert" className="alert mb-6">
                         <span>{t('about')}</span>
                     </div>
 
@@ -174,7 +174,7 @@ export function HomePage() {
                         <p className={`label ${hintColor}`}>{hint}</p>
                     </fieldset>
 
-                    <div role="alert" className="alert flex flex-col items-start">
+                    <div role="alert" className="alert flex flex-col items-start mt-6 gap-0">
                         {t('example_prompt')}
                         <Examples len={len} random={random} target={target} />
                     </div>
