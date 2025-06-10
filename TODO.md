@@ -1,8 +1,5 @@
 # To Do
 
-- [ ] copy to clipboard for input
-- [ ] copy to clipboard for examples
-- [ ] setting for random/same digits
 - [ ] test on mobile
 - [ ] font: [Open Sans](https://fonts.google.com/specimen/Open+Sans)
 - [ ] static website
@@ -21,5 +18,4 @@
 - [ ] Analytics
 - [ ] 404 page
 - [ ] other .well-known stuff
-
-
+- [ ] copy to clipboard for input

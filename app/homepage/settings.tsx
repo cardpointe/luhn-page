@@ -144,6 +144,31 @@ export function Settings() {
                     </div>
 
                     <div className="p-3">
+                        <div className="font-bold pb-2">{t('settings_example')}</div>
+                        
+                            <div className="flex flex-row items-center ps-4 pb-1"
+                                onClick={() => {
+                                    setSearchParams((p) => {
+                                        p.set("random", "1");
+                                        return p;
+                                    });    
+                                }}
+                            >
+                                {t('settings_example_random')}
+                            </div>
+                            <div className="flex flex-row items-center ps-4 pb-1"
+                                onClick={() => {
+                                    setSearchParams((p) => {
+                                        p.delete("random");
+                                        return p;
+                                    });    
+                                }}
+                            >
+                                {t('settings_example_same')}
+                            </div>
+                    </div>
+
+                    <div className="p-3">
                         <div className="font-bold pb-2">{t('settings_locale')}</div>
                         {sortedLocales.map((locale) => (
                             <div
@@ -154,7 +179,7 @@ export function Settings() {
                                     Cookies.set('locale', locale, { expires: 365 });
                                 }}
                             >
-                                <span className="ps-3">{t(`settings_locale_${locale}`)}</span>
+                                {t(`settings_locale_${locale}`)}
                             </div>
                         ))}
                     </div>
