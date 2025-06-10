@@ -1,12 +1,13 @@
 {
-    "about": "Acerca de",
+    "about": "El algoritmo de Luhn es una fórmula sencilla de dígitos de control que se utiliza para validar diversos números de identificación, incluyendo la mayoría de las tarjetas de crédito. Ayuda a detectar errores accidentales en los números, como dígitos mal escritos. (<WikipediaLink>Wikipedia</WikipediaLink>)",
+    "description": "Página de ayuda para calcular números que pasan el algoritmo de validación de Luhn.",
     "empty_hint": "Introduce un número de {{len}} dígitos",
     "err_invalid": "Entrada inválida",
     "err_not_luhn": "No pasa la validación de Luhn",
     "err_too_long": "Demasiado largo: debe tener {{len}} dígitos",
     "err_too_short": "Demasiado corto: debe tener {{len}} dígitos",
     "example_prompt": "Algunos números válidos:",
-    "footer": "Desarrollado por <DevLink>Fiserv</DevLink>",
+    "footer": "Desarrollado por <DevLink>Fiserv</DevLink>.  Copyright © 2025. All rights reserved.",
     "placeholder": "Número a validar",
     "prompt": "Número",
     "settings": "Configuración",
@@ -22,5 +23,6 @@
     "settings_mode_current": "{{mode}} (actual)",
     "settings_close": "Cerrar",
     "title": "Calculadora de Luhn",
-    "valid_luhn": "¡Genial! Este número pasa la validación de Luhn."
+    "valid_luhn": "¡Genial! Este número pasa la validación de Luhn.",
+    "wikipedia_link": "https://es.wikipedia.org/wiki/Algoritmo_de_Luhn"
 }

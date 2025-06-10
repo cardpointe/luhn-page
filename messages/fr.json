@@ -1,12 +1,13 @@
 {
-    "about": "Page d'aide pour calculer les nombres qui passent l'algorithme de validation de Luhn.",
+    "about": "L'algorithme de Luhn est une formule de contrôle simple utilisée pour valider divers numéros d'identification, notamment la plupart des cartes de crédit. Il permet de détecter les erreurs de saisie, comme les fautes de frappe. (<WikipediaLink>Wikipedia</WikipediaLink>)",
+    "description": "Page d'aide pour calculer les nombres qui passent l'algorithme de validation de Luhn.",
     "empty_hint": "Entrez un nombre de {{len}} chiffres",
     "err_invalid": "Entrée invalide",
     "err_not_luhn": "Ne passe pas la validation de Luhn",
     "err_too_long": "Trop long : doit comporter {{len}} chiffres",
     "err_too_short": "Trop court : doit comporter {{len}} chiffres",
     "example_prompt": "Quelques nombres valides :",
-    "footer": "Propulsé par <DevLink>Fiserv</DevLink>",
+    "footer": "Propulsé par <DevLink>Fiserv</DevLink>.  Copyright © 2025. All rights reserved.",
     "placeholder": "Nombre à valider",
     "prompt": "Nombre",
     "settings": "Paramètres",
@@ -22,5 +23,6 @@
     "settings_mode_current": "{{mode}} (actuel)",
     "settings_close": "Fermer",
     "title": "Calculatrice de Luhn",
-    "valid_luhn": "Youpi ! Ce nombre passe la validation de Luhn !"
+    "valid_luhn": "Youpi ! Ce nombre passe la validation de Luhn !",
+    "wikipedia_link": "https://fr.wikipedia.org/wiki/Algorithme_de_Luhn"
 }

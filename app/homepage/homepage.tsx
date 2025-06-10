@@ -61,7 +61,7 @@ type ExamplesProps = {
 
 export function Examples({ len, target, random }: ExamplesProps) {
 
-    let examples:string[] = [];
+    let examples: string[] = [];
 
     if (target.length >= len - 1) {
         const valid = luhnGenerate(len, () => "0", target);
@@ -75,7 +75,7 @@ export function Examples({ len, target, random }: ExamplesProps) {
     }
 
     while (examples.length < 5) {
-        let newNum:string;
+        let newNum: string;
         if (target.length == 0) {
             const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
             newNum = luhnGenerate(len, random ? randomDigit : () => "0", prefix);
@@ -101,7 +101,7 @@ export function Examples({ len, target, random }: ExamplesProps) {
 
 export function HomePage() {
 
-    const { t, i18n } = useTranslation(); 
+    const { t, i18n } = useTranslation();
     const [searchParams, setSearchParams] = useSearchParams();
 
     const slen = searchParams.get("len");
@@ -151,8 +151,11 @@ export function HomePage() {
 
                 <div className="max-w-xl min-w-lg px-6">
 
-                    <div role="alert" className="alert mb-6">
-                        <span>{t('about')}</span>
+                    <div role="alert" className="alert mb-6 block">
+                        <Trans
+                            i18nKey="about"
+                            components={{ WikipediaLink: <a className="link" href={t('wikipedia_link')} /> }}
+                        />
                     </div>
 
                     <fieldset className="fieldset">
@@ -165,9 +168,9 @@ export function HomePage() {
                             onChange={(e) => {
                                 const n = e.target.value.replace(/\D/g, "");
                                 if (n) {
-                                    setSearchParams((p) => {p.set("n", n); return p});
+                                    setSearchParams((p) => { p.set("n", n); return p });
                                 } else {
-                                    setSearchParams((p) => {p.delete("n"); return p});
+                                    setSearchParams((p) => { p.delete("n"); return p });
                                 }
                             }}
                         />
@@ -181,10 +184,10 @@ export function HomePage() {
                 </div>
             </div>
             <div className="flex justify-center items-center text-xs text-neutral/50 my-4">
-            <Trans 
-                i18nKey="footer"
-                components={{ DevLink: <a className="px-1 font-bold" href='https://developer.fiserv.com/'/> }}
-            />
+                <Trans
+                    i18nKey="footer"
+                    components={{ DevLink: <a className="ps-1 font-bold" href='https://developer.fiserv.com/' /> }}
+                />
             </div>
         </div>
     );
