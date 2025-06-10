@@ -1,6 +1,5 @@
 # To Do
 
-- [ ] test on mobile
 - [ ] static website
 - [ ] version info
 - [ ] Dockerfile
@@ -11,5 +10,7 @@
 - [ ] Fiserv (orange) theme (or Fiserv-ify light/dark themes)
 - [ ] Analytics
 - [ ] 404 page
+- [ ] robots.txt
+- [ ] sitemap.xml
 - [ ] other .well-known stuff
 - [ ] copy to clipboard for input

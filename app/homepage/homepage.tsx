@@ -64,9 +64,9 @@ export function HomePage() {
             </div>
             <div className="flex flex-col grow justify-center items-center pb-7">
 
-                <div className="max-w-xl min-w-lg px-6">
+                <div className="max-w-xl px-6">
 
-                    <div role="alert" className="alert mb-6 block">
+                    <div role="alert" className="alert mt-2 mb-6 block">
                         <Trans
                             i18nKey="about"
                             components={{ WikipediaLink: <a className="link link-primary" href={t('wikipedia_link')} /> }}
@@ -94,7 +94,6 @@ export function HomePage() {
                     </fieldset>
 
                     <div role="alert" className="alert flex flex-col items-start mt-6 gap-0">
-                        {t('example_prompt')}
                         <Examples len={len} random={random} target={target} />
                     </div>
                 </div>

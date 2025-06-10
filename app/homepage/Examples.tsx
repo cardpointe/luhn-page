@@ -40,8 +40,25 @@ type ExamplesProps = {
     random: boolean,
 }
 
+type PrefillType = {
+    name: string,
+    prefix: string,
+    logo: string,
+};
+
+const prefills = [
+//    { name: "Any", prefix: "", logo: "/images/any.svg" },
+    { name: "Visa", prefix: "40", logo: "/images/visa.svg" },
+    { name: "MasterCard", prefix: "51", logo: "/images/mastercard.svg" },
+    { name: "American Express", prefix: "34", logo: "/images/amex.svg" },
+    { name: "Discover", prefix: "6011", logo: "/images/discover.svg" },
+//    { name: "JCB", prefix: "35", logo: "/images/jcb.svg" },
+    { name: "Diners Club", prefix: "30", logo: "/images/dinersclub.svg" },
+];
+
 export function Examples({ len, target, random }: ExamplesProps) {
     const { t, i18n } = useTranslation();
+    const [searchParams, setSearchParams] = useSearchParams();
 
     let examples: string[] = [];
 
@@ -76,23 +93,53 @@ export function Examples({ len, target, random }: ExamplesProps) {
 
     return (
         <>
+            <div className="flex rows items-center justify-between">
+            {t('example_prompt')}
+            { target.length == -1 && (
+                <>
+                {prefills.map((p: PrefillType) => (
+                    <button key={p.prefix} className="btn btn-sm m-1" onClick={() => {
+                        setSearchParams((params) => {
+                            if (p.prefix) {
+                                params.set("n", p.prefix);
+                            } else {
+                                params.delete("n");
+                            }
+                            return params;
+                        });
+                    }}>
+                        <img src={p.logo} alt={p.name} className="h-6 inline" />
+                    </button>
+                ))}
+                </>
+            )}
+            </div>
             <ul className="">
                 {examples.map((n) => (
                     <li key={n} className="my-1 font-mono">
                         <button className="flex items-center border border-dotted rounded-md gap-2 p-2 border-base-content/50" onClick={() => {
-                            if (!navigator.clipboard) {
+                            try {
+                                if (!navigator.clipboard) {
+                                    const element = document.createElement("textarea");
+                                    element.value = n;
+                                    document.body.appendChild(element)
+                                    element.select();
+                                    document.execCommand("copy");
+                                    document.body.removeChild(element);
+                                } else {
+                                    navigator.clipboard.writeText(n);
+                                }
+                                document.getElementById("clipboard-success")?.classList.remove("hidden");
+                                setTimeout(() => {
+                                    document.getElementById("clipboard-success")?.classList.add("hidden");
+                                }
+                                    , 1500);
+                            } catch (e) {
                                 document.getElementById("clipboard-error")?.classList.remove("hidden");
                                 setTimeout(() => {
                                     document.getElementById("clipboard-error")?.classList.add("hidden");
-                                }, 2000);
-                                return;
+                                }, 1500);
                             }
-                            navigator.clipboard.writeText(n);
-                            document.getElementById("clipboard-success")?.classList.remove("hidden");
-                            setTimeout(() => {
-                                document.getElementById("clipboard-success")?.classList.add("hidden");
-                            }
-                            , 1500);
                         }}>
                             {n} <PiClipboardFill size={24} className="inline" />
                         </button>
