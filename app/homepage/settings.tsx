@@ -51,7 +51,7 @@ function saveMode(theMode: Mode) {
     }
 }
 
-export default function Settings() {
+export function Settings() {
     const { t, i18n } = useTranslation(); 
 
     const [searchParams, setSearchParams] = useSearchParams();

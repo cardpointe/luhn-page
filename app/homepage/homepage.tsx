@@ -4,25 +4,10 @@ import { Trans, useTranslation } from 'react-i18next';
 
 import { Link, useSearchParams } from "react-router";
 
-import Settings from "./settings";
+import { Examples } from "./Examples";
+import { luhnCheck } from "./luhnCheck";
+import { Settings } from "./settings";
 
-function luhnCheck(num: string) {
-    let sum = 0;
-    let alternate = false;
-
-    for (let i = num.length - 1; i >= 0; i--) {
-        let n = parseInt(num.charAt(i), 10);
-        if (alternate) {
-            n *= 2;
-            if (n > 9) {
-                n -= 9;
-            }
-        }
-        sum += n;
-        alternate = !alternate;
-    }
-    return sum % 10 == 0;
-}
 
 function luhnGenerate(len: number, filler: () => string, num: string) {
     if (num.length > len - 1) {
@@ -44,61 +29,6 @@ function randomDigit() {
     return Math.floor(Math.random() * 10).toString();
 }
 
-const prefixes = [
-    "40", "42", "45", "48", // Visa
-    "51", "52", "53", "54", "55", // MasterCard
-    "34", "37", // American Express
-    "6011", "65", // Discover
-    "35", // JCB
-    "30", "36", "38", // Diners Club
-];
-
-type ExamplesProps = {
-    len: number,
-    target: string,
-    random: boolean,
-}
-
-export function Examples({ len, target, random }: ExamplesProps) {
-
-    let examples: string[] = [];
-
-    if (target.length >= len - 1) {
-        const valid = luhnGenerate(len, () => "0", target);
-        if (valid != target) {
-            examples.push(valid);
-        }
-    }
-
-    if (target.length >= len - 2) {
-        target = target.slice(0, len - 3);
-    }
-
-    while (examples.length < 5) {
-        let newNum: string;
-        if (target.length == 0) {
-            const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
-            newNum = luhnGenerate(len, random ? randomDigit : () => "0", prefix);
-        } else {
-            newNum = luhnGenerate(len, random ? randomDigit : () => (examples.length).toString(), target);
-        }
-        if (!examples.includes(newNum)) {
-            examples.push(newNum);
-        } else {
-            console.log(`skipping dup ${newNum}`);
-        }
-    }
-
-    return (
-        <ul className="">
-            {examples.map((n) => (
-                <li key={n} className="p-1 my-1 font-mono">{n}</li>
-            ))}
-        </ul>
-    )
-}
-
-
 export function HomePage() {
 
     const { t, i18n } = useTranslation();
@@ -119,21 +49,26 @@ export function HomePage() {
     const target = searchParams.get("n") ?? "";
     let hint = "";
     let hintColor = "";
+    let inputColor = "";
     if (target.length == 0) {
         hint = t('empty_hint', { len });
-        hintColor = "text-neutral/33";
+        hintColor = "text-base-content/50";
     } else if (target.length < len) {
         hint = t('err_too_short', { len });
         hintColor = "text-error";
+        inputColor = "input-error";
     } else if (target.length > len) {
         hint = t('err_too_long', { len });
         hintColor = "text-error";
+        inputColor = "input-error";
     } else if (luhnCheck(target)) {
         hint = t('valid_luhn');
         hintColor = "text-success";
+        inputColor = "input-success";
     } else {
         hint = t('err_not_luhn');
         hintColor = "text-error";
+        inputColor = "input-error";
     }
 
     return (
@@ -154,7 +89,7 @@ export function HomePage() {
                     <div role="alert" className="alert mb-6 block">
                         <Trans
                             i18nKey="about"
-                            components={{ WikipediaLink: <a className="link" href={t('wikipedia_link')} /> }}
+                            components={{ WikipediaLink: <a className="link link-primary" href={t('wikipedia_link')} /> }}
                         />
                     </div>
 
@@ -162,7 +97,7 @@ export function HomePage() {
                         <legend className="fieldset-legend">{t('prompt')}</legend>
                         <input
                             type="number"
-                            className="input"
+                            className={`input ${inputColor}`}
                             placeholder={t('placeholder')}
                             value={searchParams.get("n") ?? ""}
                             onChange={(e) => {

@@ -1,5 +1,7 @@
 {
     "about": "L'algorithme de Luhn est une formule de contrôle simple utilisée pour valider divers numéros d'identification, notamment la plupart des cartes de crédit. Il permet de détecter les erreurs de saisie, comme les fautes de frappe. (<WikipediaLink>Wikipedia</WikipediaLink>)",
+    "clipboard_error": "Erreur lors de la copie dans le presse-papiers",
+    "clipboard_success": "Copié dans le presse-papiers",
     "description": "Page d'aide pour calculer les nombres qui passent l'algorithme de validation de Luhn.",
     "empty_hint": "Entrez un nombre de {{len}} chiffres",
     "err_invalid": "Entrée invalide",
