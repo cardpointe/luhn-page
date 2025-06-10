@@ -56,13 +56,16 @@ export function Examples({ len, target, random }: ExamplesProps) {
         target = target.slice(0, len - 3);
     }
 
+    let fillDigit = examples.length;
+
     while (examples.length < 5) {
         let newNum: string;
         if (target.length == 0) {
             const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
             newNum = luhnGenerate(len, random ? randomDigit : () => "0", prefix);
         } else {
-            newNum = luhnGenerate(len, random ? randomDigit : () => (examples.length).toString(), target);
+            newNum = luhnGenerate(len, random ? randomDigit : () => (fillDigit).toString(), target);
+            fillDigit++;
         }
         if (!examples.includes(newNum)) {
             examples.push(newNum);

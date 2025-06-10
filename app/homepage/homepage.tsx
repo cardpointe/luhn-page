@@ -9,26 +9,6 @@ import { luhnCheck } from "./luhnCheck";
 import { Settings } from "./settings";
 
 
-function luhnGenerate(len: number, filler: () => string, num: string) {
-    if (num.length > len - 1) {
-        num = num.slice(0, len - 1);
-    } else if (num.length < len - 1) {
-        while (num.length < len - 1) {
-            num += filler();
-        }
-    }
-    for (let i = 0; i < 10; i++) {
-        if (luhnCheck(num + i.toString())) {
-            return num + i.toString();
-        }
-    }
-    return "";
-}
-
-function randomDigit() {
-    return Math.floor(Math.random() * 10).toString();
-}
-
 export function HomePage() {
 
     const { t, i18n } = useTranslation();
@@ -97,9 +77,10 @@ export function HomePage() {
                         <legend className="fieldset-legend">{t('prompt')}</legend>
                         <input
                             type="number"
-                            className={`input ${inputColor}`}
+                            className={`focus:outline-none input ${inputColor}`}
                             placeholder={t('placeholder')}
                             value={searchParams.get("n") ?? ""}
+                            autoFocus
                             onChange={(e) => {
                                 const n = e.target.value.replace(/\D/g, "");
                                 if (n) {
