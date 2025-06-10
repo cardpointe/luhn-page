@@ -1,13 +1,4 @@
 {
-  "name": "luhn-page",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "react-router build",
-    "dev": "react-router dev --port ${PORT:-4000}",
-    "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
-  },
   "dependencies": {
     "@react-router/node": "^7.5.3",
     "@react-router/serve": "^7.5.3",
@@ -34,5 +25,15 @@
     "typescript": "^5.8.3",
     "vite": "^6.3.3",
     "vite-tsconfig-paths": "^5.1.4"
-  }
+  },
+  "license": "AGPL-3.0-or-later",
+  "name": "luhn-page",
+  "private": true,
+  "scripts": {
+    "build": "react-router build",
+    "dev": "react-router dev --port ${PORT:-4000}",
+    "start": "react-router-serve ./build/server/index.js",
+    "typecheck": "react-router typegen && tsc"
+  },
+  "type": "module"
 }

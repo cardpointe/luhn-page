@@ -1,14 +1,8 @@
 # To Do
 
 - [ ] test on mobile
-- [ ] font: [Open Sans](https://fonts.google.com/specimen/Open+Sans)
 - [ ] static website
-- [ ] LICENSE.txt
-- [ ] CONTRIBUTING.md
-- [ ] credits cleanup
-- [ ] blurb in readme
 - [ ] version info
-- [ ] copyright in footer
 - [ ] Dockerfile
 - [ ] CI job: build
 - [ ] CI job: translations up to date (=all have the same keys)
