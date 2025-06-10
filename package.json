@@ -31,7 +31,7 @@
   "private": true,
   "scripts": {
     "build": "react-router build",
-    "dev": "react-router dev --port ${PORT:-4000}",
+    "dev": "react-router dev --host 0.0.0.0 --port ${PORT:-4000}",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc"
   },
