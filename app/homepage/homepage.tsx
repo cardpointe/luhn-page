@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { PiGear } from "react-icons/pi";
+import { useRef, useState } from "react";
+import { PiGear, PiX } from "react-icons/pi";
 import { Trans, useTranslation } from 'react-i18next';
 
 import { Link, useSearchParams } from "react-router";
@@ -14,6 +14,8 @@ export function HomePage() {
 
     const { t, i18n } = useTranslation();
     const [searchParams, setSearchParams] = useSearchParams();
+    const inputRef = useRef(null)
+
 
     const slen = searchParams.get("len");
     let len = slen ? parseInt(slen) : 16;
@@ -31,25 +33,31 @@ export function HomePage() {
     let hint = "";
     let hintColor = "";
     let inputColor = "";
+    let borderColor = "";
     if (target.length == 0) {
         hint = t('empty_hint', { len });
         hintColor = "text-base-content/50";
+        borderColor = "border-base-content";
     } else if (target.length < len) {
         hint = t('err_too_short', { len });
         hintColor = "text-error";
         inputColor = "input-error";
+        borderColor = "border-error";
     } else if (target.length > len) {
         hint = t('err_too_long', { len });
         hintColor = "text-error";
         inputColor = "input-error";
+        borderColor = "border-error";
     } else if (luhnCheck(target)) {
         hint = t('valid_luhn');
         hintColor = "text-success";
         inputColor = "input-success";
+        borderColor = "border-success";
     } else {
         hint = t('err_not_luhn');
         hintColor = "text-error";
         inputColor = "input-error";
+        borderColor = "border-error";
     }
 
     return (
@@ -77,21 +85,36 @@ export function HomePage() {
                     <fieldset className="fieldset">
                         <legend className="fieldset-legend">{t('prompt')}</legend>
                         <div className="flex items-center">
-                        <input
-                            type="number"
-                            className={`focus:outline-none input ${inputColor}`}
-                            placeholder={t('placeholder')}
-                            value={searchParams.get("n") ?? ""}
-                            autoFocus
-                            onChange={(e) => {
-                                const n = e.target.value.replace(/\D/g, "");
-                                if (n) {
-                                    setSearchParams((p) => { p.set("n", n); return p });
-                                } else {
-                                    setSearchParams((p) => { p.delete("n"); return p });
-                                }
-                            }}
-                        />{ (getCardType(searchParams.get("n")) != null) && <CardType target={searchParams.get("n")} /> }
+
+                            <div className={`join ${borderColor}`}>
+                                <input
+                                    type="number"
+                                    className={`join-item input focus:outline-none ${inputColor} border-e-0 ${borderColor}`}
+                                    placeholder={t('placeholder')}
+                                    value={searchParams.get("n") ?? ""}
+                                    ref={inputRef}
+                                    autoFocus
+                                    onChange={(e) => {
+                                        const n = e.target.value.replace(/\D/g, "");
+                                        if (n) {
+                                            setSearchParams((p) => { p.set("n", n); return p });
+                                        } else {
+                                            setSearchParams((p) => { p.delete("n"); return p });
+                                        }
+                                    }}
+                                />
+                                <button
+                                    className={`join-item btn btn-square btn-outline border-s-0 ${borderColor} focus:${borderColor} hover:bg-transparent`}
+                                    onClick={() => {
+                                        setSearchParams((p) => { p.delete("n"); return p });
+
+                                        inputRef && inputRef.current ? (inputRef.current as HTMLInputElement).focus() : null;
+                                    }}
+                                >
+                                    <PiX size={14} />
+                                </button>
+                            </div>
+                            {(getCardType(searchParams.get("n")) != null) && <CardType target={searchParams.get("n")} />}
                         </div>
                         <p className={`label ${hintColor}`}>{hint}</p>
                     </fieldset>
