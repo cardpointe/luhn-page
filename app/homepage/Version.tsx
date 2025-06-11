@@ -64,22 +64,28 @@ export function Version() {
                 <img src="/logo.svg" alt="logo" className="h-10" />
             </div>
             <dialog
-                className="modal"
+                className="modal p-5"
                 id="version-dialog"
                 open={open}
                 onClose={() => handleClose()}
             >
-                <div className="modal-box w-100 flex flex-col gap-0 p-0">
+                <div className="modal-box flex flex-col gap-0 p-0">
                     <span className="p-3 text-xl font-bold border-b border-neutral/50">{t('version_title')}</span>
 
-                    <div className="p-3 grid grid-cols-2 gap-4">
-                        <div className="">{t('version_commit')}</div>
-                        <div className="">{statusData.commit /* LATER: hyperlink to source */}</div>
-                        <div className="">{t('version_lastmod')}</div>
-                        <div className="">{statusData.lastmod}</div>
-                        <div className="">{t('version_tech')}</div>
-                        <div className="">{statusData.tech}</div>
-                    </div>
+                    <table className="mx-3 table-auto border-separate border-spacing-y-3">
+                        <tr>
+                            <td>{t('version_commit')}</td>
+                            <td>{statusData.commit /* LATER: hyperlink to source */}</td>
+                        </tr>
+                        <tr>
+                            <td>{t('version_lastmod')}</td>
+                            <td className="whitespace-nowrap">{statusData.lastmod}</td>
+                        </tr>
+                        <tr>
+                            <td>{t('version_tech')}</td>
+                            <td className="whitespace-nowrap">{statusData.tech}</td>
+                        </tr>
+                    </table>
 
                     <div className="flex justify-center items-center p-3">
                         <button
