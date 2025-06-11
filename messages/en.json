@@ -1,5 +1,13 @@
 {
     "about": "The Luhn algorithm is a simple check digit formula used to validate a variety of identification numbers, including most credit cards. It helps to detect accidental errors in numbers such as mistyped digits. (<WikipediaLink>Wikipedia</WikipediaLink>)",
+    "card_amex": "American Express",
+    "card_diners": "Diners Club",
+    "card_discover": "Discover",
+    "card_jcb": "JCB",
+    "card_mastercard": "MasterCard",
+    "card_unionpay": "UnionPay",
+    "card_unknown": "Unknown",
+    "card_visa": "Visa",
     "clipboard_error": "Error copying to clipboard",
     "clipboard_success": "Copied to clipboard",
     "description": "Helper page for calculating numbers that pass the Luhn validation algorithm.",

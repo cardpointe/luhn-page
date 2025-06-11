@@ -1,5 +1,13 @@
 {
     "about": "L'algorithme de Luhn est une formule de contrôle simple utilisée pour valider divers numéros d'identification, notamment la plupart des cartes de crédit. Il permet de détecter les erreurs de saisie, comme les fautes de frappe. (<WikipediaLink>Wikipedia</WikipediaLink>)",
+    "card_amex": "American Express",
+    "card_diners": "Diners Club",
+    "card_discover": "Discover",
+    "card_jcb": "JCB",
+    "card_mastercard": "MasterCard",
+    "card_unionpay": "UnionPay",
+    "card_unknown": "Inconnu",
+    "card_visa": "Visa",
     "clipboard_error": "Erreur lors de la copie dans le presse-papiers",
     "clipboard_success": "Copié dans le presse-papiers",
     "description": "Page d'aide pour calculer les nombres qui passent l'algorithme de validation de Luhn.",
