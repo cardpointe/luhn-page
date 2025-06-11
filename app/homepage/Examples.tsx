@@ -111,7 +111,7 @@ export function Examples({ len, target, random }: ExamplesProps) {
                                 }, 1500);
                             }
                         }}>
-                            {n} <PiClipboardFill size={24} className="inline" />
+                            {n}{target == '' && n.length == 15 ? '\u2002' : ''} <PiClipboardFill size={24} className="inline" />
                         </button>
                         { target.length == 0 && <CardType target={n} clickable={true} /> }
                     </li>
