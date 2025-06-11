@@ -7,6 +7,7 @@ import { Link, useSearchParams } from "react-router";
 import { Examples } from "./Examples";
 import { luhnCheck } from "./luhnCheck";
 import { Settings } from "./settings";
+import { CardType, getCardType } from "./CardType";
 
 
 export function HomePage() {
@@ -75,6 +76,7 @@ export function HomePage() {
 
                     <fieldset className="fieldset">
                         <legend className="fieldset-legend">{t('prompt')}</legend>
+                        <div className="flex items-center">
                         <input
                             type="number"
                             className={`focus:outline-none input ${inputColor}`}
@@ -89,7 +91,8 @@ export function HomePage() {
                                     setSearchParams((p) => { p.delete("n"); return p });
                                 }
                             }}
-                        />
+                        />{ (getCardType(searchParams.get("n")) != null) && <CardType target={searchParams.get("n")} /> }
+                        </div>
                         <p className={`label ${hintColor}`}>{hint}</p>
                     </fieldset>
 
