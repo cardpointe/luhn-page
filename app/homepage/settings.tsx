@@ -69,7 +69,7 @@ export function Settings() {
         parsedLen = 20;
     }
 
-    const [len, setLen] = React.useState(parsedLen);
+    //const [len, setLen] = React.useState(parsedLen);
 
     const open = Boolean(anchorEl);
 
@@ -125,10 +125,10 @@ export function Settings() {
                     <div className="p-3">
                         <div className="font-bold pb-2">{t('settings_length')}</div>
                         <div className="flex flex-row items-center ps-3 gap-3">
-                            <span className="font-mono">{len < 10 ? ' ' : ''}{len}</span>
-                        <input id="test" type="range" min="4" max="20" value={len} className="range [--range-fill:0]"
+                            <span className="font-mono">{parsedLen < 10 ? ' ' : ''}{parsedLen}</span>
+                        <input id="test" type="range" min="4" max="20" value={parsedLen} className="range [--range-fill:0]"
                         onChange={(e) => { 
-                            setLen(parseInt(e.target.value));
+                            //setLen(parseInt(e.target.value));
 
                             setSearchParams((p) => {
                                 if (parseInt(e.target.value) == 16 ) {

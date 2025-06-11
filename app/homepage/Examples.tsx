@@ -66,7 +66,8 @@ export function Examples({ len, target, random }: ExamplesProps) {
         let newNum: string;
         if (target.length == 0) {
             const prefix = prefills[loop % prefills.length];
-            newNum = luhnGenerate(len, random ? randomDigit : () => "0", prefix);
+            const genLen = len >= 15 ? getCardType(prefix)?.length || 16 : len;
+            newNum = luhnGenerate(genLen, random ? randomDigit : () => "0", prefix);
         } else {
             newNum = luhnGenerate(len, random ? randomDigit : () => (loop).toString(), target);
         }
