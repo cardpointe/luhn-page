@@ -1,0 +1,11 @@
+#
+# robots.txt for the Luhn Calculator
+#
+# everything is indexable: have at it!
+#
+
+#Sitemap: LATER: full url to /sitemap.xml
+
+
+User-Agent: *
+Disallow: /honeypot.txt
