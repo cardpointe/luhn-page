@@ -6,6 +6,7 @@ type CardType = {
     prefix: RegExp;
     logo: string;
     samplePrefixes: string[];
+    length?: number;
 };
 
 
@@ -13,7 +14,7 @@ type CardType = {
 const cardtypes = [
     { key: "card_visa", prefix: new RegExp("^4"), logo: "/images/visa.svg", samplePrefixes: ["4"]},
     { key: "card_mastercard", prefix: RegExp("^5[1-5]"), logo: "/images/mastercard.svg",  samplePrefixes: ["51", "52", "53"] },
-    { key: "card_amex", prefix: RegExp("^3[47]"), logo: "/images/amex.svg", samplePrefixes: ["34", "37"] },
+    { key: "card_amex", prefix: RegExp("^3[47]"), logo: "/images/amex.svg", samplePrefixes: ["34", "37"], length: 15 },
     { key: "card_discover", prefix: RegExp("^6(011|5)"), logo: "/images/discover.svg",  samplePrefixes: ["6011", "65"] },
     { key: "card_diners", prefix: RegExp("^3[068]"), logo: "/images/dinersclub.svg",  samplePrefixes: ["30", "36", "38"] },
     { key: "card_jcb", prefix: RegExp("^35"), logo: "/images/jcb.svg",  samplePrefixes: ["35"] },
@@ -45,6 +46,11 @@ export function CardType({ target, clickable }: { target: string | null, clickab
         setSearchParams((prev) => {
             const newParams = new URLSearchParams(prev);
             newParams.set("n", prefix);
+            if (cardType.length) {
+                newParams.set("len", cardType.length.toString());
+            } else {
+                newParams.delete("len");
+            }
             return newParams;
         })} : undefined;
 
