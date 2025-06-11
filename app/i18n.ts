@@ -6,11 +6,12 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 // the translations
 import translationBY from '../messages/by.json';
+import translationDE from '../messages/de.json';
 import translationEN from '../messages/en.json';
 import translationES from '../messages/es.json';
 import translationFR from '../messages/fr.json';
 
-export const locales = ['by', 'en', 'es', 'fr']; // LATER: is there a way to get the list from i18n after initialization?
+export const locales = ['by', 'de', 'en', 'es', 'fr']; // LATER: is there a way to get the list from i18n after initialization?
 
 i18n
     // load translation using http -> see /public/locales (i.e. https://github.com/i18next/react-i18next/tree/master/example/react/public/locales)
@@ -38,6 +39,9 @@ i18n
         resources: {
             by: {
                 translation: translationBY
+            },
+            de: {
+                translation: translationDE
             },
             en: {
                 translation: translationEN
