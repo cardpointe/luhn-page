@@ -8,6 +8,7 @@ import { Examples } from "./Examples";
 import { luhnCheck } from "./luhnCheck";
 import { Settings } from "./settings";
 import { CardType, getCardType } from "./CardType";
+import { Version } from "./Version";
 
 
 export function HomePage() {
@@ -65,7 +66,7 @@ export function HomePage() {
             <div className="flex justify-center border-b border-neutral/10">
                 <div className="max-w-3xl navbar bg-base-100">
                     <div className="flex-1 flex items-center ps-2">
-                        <img src="/logo.svg" alt="logo" className="h-10 inline" />
+                        <Version />
                         <span className="ps-4 font-bold text-xl">{t('title')}</span>
                     </div>
                     <Settings />

@@ -39,5 +39,9 @@
     "settings_mode_light": "Hell",
     "title": "Luhn-Rechner",
     "valid_luhn": "Juhu! Diese Zahl besteht die Luhn-Validierung!",
+    "version_commit": "Commit",
+    "version_lastmod": "Letzte Änderung",
+    "version_tech": "Technologie",
+    "version_title": "Versionsinformationen",
     "wikipedia_link": "https://de.wikipedia.org/wiki/Luhn-Algorithmus"
 }

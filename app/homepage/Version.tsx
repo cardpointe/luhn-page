@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-import statusData from '../../public/status.json';
-
+type VersionData = {
+    commit: string;
+    lastmod: string;
+    tech: string;
+}
 
 export function Version() {
     const { t, i18n } = useTranslation();
@@ -11,6 +14,21 @@ export function Version() {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
     const open = Boolean(anchorEl);
+    const [statusData, setStatusData] = useState({ commit: '', lastmod: '', tech: '' } as VersionData);
+
+    useEffect(() => {
+        console.log('Fetching status data...');
+        // Fetch the status data from the server
+        fetch('/status.json')
+            .then(response => response.json())
+            .then(data => {
+                console.log('Status data fetched:', data);
+                setStatusData(data);
+            })
+            .catch(error => {
+                console.error('Error fetching status data:', error);
+            });
+    }, []);
 
     const handleClick = () => {
         const theDialog = document.getElementById("version-dialog")

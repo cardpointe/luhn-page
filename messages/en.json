@@ -39,5 +39,9 @@
     "settings_mode_light": "Light",
     "title": "Luhn Calculator",
     "valid_luhn": "Yay! This number passes Luhn validation!",
+    "version_commit": "Commit",
+    "version_lastmod": "Last Modified",
+    "version_tech": "Technology",
+    "version_title": "Version Information",
     "wikipedia_link": "https://en.wikipedia.org/wiki/Luhn_algorithm"
 }

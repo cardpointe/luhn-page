@@ -39,5 +39,9 @@
   "settings_mode_light": "Светлы",
   "title": "Калькулятар Луна",
   "valid_luhn": "Ура! Гэты нумар праходзіць праверку Луна!",
+  "version_commit": "Commit",
+  "version_lastmod": "Апошняя змена",
+  "version_tech": "Тэхналогія",
+  "version_title": "Інфармацыя пра версію",
   "wikipedia_link": "https://be.wikipedia.org/wiki/Алгарытм_Луна"
 }
