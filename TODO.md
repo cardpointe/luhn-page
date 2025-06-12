@@ -1,8 +1,6 @@
 # To Do
 
-- 
-- [ ] Analytics
-- [ ] build_static.sh
+-
 - [ ] CI job: build
 - [ ] CI job: translations up to date (=all have the same keys)
 - [ ] Google Analytics

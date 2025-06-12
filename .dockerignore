@@ -1,4 +1,6 @@
-.react-router
+.*
 build
+LICENSE.txt
+*.md
 node_modules
-README.md
+tmp
