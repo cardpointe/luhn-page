@@ -215,7 +215,7 @@ export function Settings() {
                     </div>
                     <div className="flex justify-center items-center p-3">
                         <button
-                            className="btn btn-primary w-full"
+                            className="btn btn-fiserv w-full"
                             onClick={() => {
                                 handleClose();
                             }}>{t('settings_close')}</button>

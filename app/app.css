@@ -29,3 +29,9 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.btn-fiserv {
+  background-color: #ff6600;
+  border-color: #ff6600;
+  color: #ffffff
+}
