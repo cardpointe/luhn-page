@@ -5,6 +5,7 @@ import { Link, useSearchParams } from "react-router";
 
 import { luhnCheck } from "./luhnCheck";
 import { CardType, getCardType } from "./CardType";
+import { Track } from "../track";
 
 function luhnGenerate(len: number, filler: () => string, num: string) {
     if (num.length > len - 1) {
@@ -99,6 +100,7 @@ export function Examples({ len, target, random }: ExamplesProps) {
                                 } else {
                                     navigator.clipboard.writeText(n);
                                 }
+                                Track('clipboard', 'copy', `len=${n.length}`);
                                 document.getElementById("clipboard-success")?.classList.remove("hidden");
                                 setTimeout(() => {
                                     document.getElementById("clipboard-success")?.classList.add("hidden");

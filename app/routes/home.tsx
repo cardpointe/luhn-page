@@ -14,6 +14,3 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return <HomePage />;
 }
-
-
-//"Helper page for calculating numbers that pass the Luhn validation algorithm."

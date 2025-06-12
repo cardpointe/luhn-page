@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
+import { Track } from '../track';
 
 type VersionData = {
     commit: string;
@@ -36,6 +37,7 @@ export function Version() {
             console.log("Null menu!?!");
             return;
         }
+        Track('page', 'view', 'about');
         (theDialog as HTMLDialogElement).showModal();
     };
 
@@ -46,6 +48,7 @@ export function Version() {
             console.log("Null menu!?!");
             return;
         }
+        Track('page', 'close', 'about');
         (theDialog as HTMLDialogElement).close();
     };
 

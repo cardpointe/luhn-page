@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useSearchParams } from "react-router";
+import { Track } from "../track";
 
 type CardType = {
     key: string;
@@ -8,8 +9,6 @@ type CardType = {
     samplePrefixes: string[];
     length?: number;
 };
-
-
 
 const cardtypes = [
     { key: "card_visa", prefix: new RegExp("^4"), logo: "/images/visa.svg", samplePrefixes: ["4"]},
@@ -43,6 +42,7 @@ export function CardType({ target, clickable }: { target: string | null, clickab
     const clickFn = clickable && cardType ? () => {
         const prefixes = cardType.samplePrefixes;
         const prefix = prefixes.length > 0 ? prefixes[Math.floor(Math.random() * prefixes.length)] : "";
+        Track('card', 'click', cardType.key);
         setSearchParams((prev) => {
             const newParams = new URLSearchParams(prev);
             newParams.set("n", prefix);

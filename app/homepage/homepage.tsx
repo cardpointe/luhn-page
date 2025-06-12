@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PiGear, PiX } from "react-icons/pi";
 import { Trans, useTranslation } from 'react-i18next';
 
@@ -9,6 +9,7 @@ import { luhnCheck } from "./luhnCheck";
 import { Settings } from "./settings";
 import { CardType, getCardType } from "./CardType";
 import { Version } from "./Version";
+import { Track } from "../track";
 
 
 export function HomePage() {
@@ -16,6 +17,10 @@ export function HomePage() {
     const { t, i18n } = useTranslation();
     const [searchParams, setSearchParams] = useSearchParams();
     const inputRef = useRef(null)
+
+    useEffect(() => {
+        Track('page', 'view', 'homepage');
+    }, []);
 
 
     const slen = searchParams.get("len");
@@ -97,6 +102,7 @@ export function HomePage() {
                                     autoFocus
                                     onChange={(e) => {
                                         const n = e.target.value.replace(/\D/g, "");
+                                        Track('input', 'change', `len=${n.length}`);
                                         if (n) {
                                             setSearchParams((p) => { p.set("n", n); return p });
                                         } else {
@@ -107,6 +113,7 @@ export function HomePage() {
                                 <button
                                     className={`join-item btn btn-square btn-outline border-s-0 ${borderColor} focus:${borderColor} hover:bg-transparent`}
                                     onClick={() => {
+                                        Track('input', 'clear');
                                         setSearchParams((p) => { p.delete("n"); return p });
 
                                         inputRef && inputRef.current ? (inputRef.current as HTMLInputElement).focus() : null;
@@ -125,7 +132,7 @@ export function HomePage() {
                     </div>
                 </div>
             </div>
-            <div className="flex justify-center items-center text-xs text-neutral/50 my-4">
+            <div className="flex justify-center items-center text-xs text-content/50 my-4">
                 <Trans
                     i18nKey="footer"
                     components={{ DevLink: <a className="ps-1 font-bold" href='https://developer.fiserv.com/' /> }}

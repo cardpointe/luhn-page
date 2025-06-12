@@ -10,6 +10,8 @@ import Cookies from 'js-cookie';
 import { locales } from '../i18n';
 import { useSearchParams } from 'react-router';
 
+import { Track } from "../track";
+
 export type Mode = (typeof modes)[number];
 
 export const modes = ['light', 'dark', 'auto'] as const;
@@ -83,6 +85,7 @@ export function Settings() {
             console.log("Null menu!?!");
             return;
         }
+        Track('page', 'view', 'settings');
         (theDialog as HTMLDialogElement).showModal();
     };
 
@@ -93,6 +96,7 @@ export function Settings() {
             console.log("Null menu!?!");
             return;
         }
+        Track('page', 'close', 'settings');
         (theDialog as HTMLDialogElement).close();
     };
 
@@ -128,7 +132,7 @@ export function Settings() {
                             <span className="font-mono">{parsedLen < 10 ? ' ' : ''}{parsedLen}</span>
                         <input id="test" type="range" min="4" max="20" value={parsedLen} className="range [--range-fill:0]"
                         onChange={(e) => { 
-                            //setLen(parseInt(e.target.value));
+                            Track('settings', 'length', `len=${e.target.value}`);
 
                             setSearchParams((p) => {
                                 if (parseInt(e.target.value) == 16 ) {
@@ -148,6 +152,7 @@ export function Settings() {
                         
                             <div className="flex flex-row items-center ps-4 pb-1"
                                 onClick={() => {
+                                    Track('settings', 'fill', 'random');
                                     setSearchParams((p) => {
                                         p.set("random", "1");
                                         return p;
@@ -158,6 +163,7 @@ export function Settings() {
                             </div>
                             <div className="flex flex-row items-center ps-4 pb-1"
                                 onClick={() => {
+                                    Track('settings', 'fill', 'same');
                                     setSearchParams((p) => {
                                         p.delete("random");
                                         return p;
@@ -175,6 +181,7 @@ export function Settings() {
                                 className="flex flex-row items-center ps-4 pb-1"
                                 key={locale}
                                 onClick={() => {
+                                    Track('settings', 'locale', locale);
                                     i18n.changeLanguage(locale);
                                     Cookies.set('locale', locale, { expires: 365 });
                                 }}
@@ -191,6 +198,7 @@ export function Settings() {
                             className="flex flex-row items-center ps-4 pb-1"
                             key={option.value}
                             onClick={() => {
+                                Track('settings', 'mode', option.value);
                                 setMode(option.value); 
                                 saveMode(option.value);
                             }}
@@ -220,5 +228,3 @@ export function Settings() {
         </>
     );
 }
-//                        {t('settings_length')}
-//                        {t('settings_language')}
