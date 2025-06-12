@@ -7,6 +7,8 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 #
 # load an .env file if it exists
 #
@@ -22,17 +24,22 @@ if [ "${PORT:-BAD}" == "BAD" ]; then
 	export PORT=80
 fi
 
+#bin/build_static.sh
+#cd "${SCRIPT_DIR}"
+
+echo "INFO: current directory is $(pwd)"
+
+echo "INFO: building docker image..."
 docker build \
-	--build-arg COMMIT=$(git rev-parse --short HEAD) \
-	--build-arg LASTMOD=$(date -u +%Y-%m-%dT%H:%M:%SZ) \
 	--progress plain \
 	--tag luhn-page \
 	.
 
+echo "INFO: running docker image on port ${PORT}..."
 docker run \
 	--env PORT=${PORT} \
 	--interactive \
-	--publish ${PORT}:${PORT} \
+	--publish ${PORT}:80 \
 	--rm \
 	--tty \
 	luhn-page
