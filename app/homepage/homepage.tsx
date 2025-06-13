@@ -42,7 +42,7 @@ export function HomePage() {
     let borderColor = "";
     if (target.length == 0) {
         hint = t('empty_hint', { len });
-        hintColor = "text-base-content/50";
+        hintColor = "text-base-content/66";
         borderColor = "border-base-content";
     } else if (target.length < len) {
         hint = t('err_too_short', { len });
@@ -91,7 +91,6 @@ export function HomePage() {
                     <fieldset className="fieldset">
                         <legend className="fieldset-legend">{t('prompt')}</legend>
                         <div className="flex items-center">
-
                             <div className={`join ${borderColor}`}>
                                 <input
                                     type="number"
@@ -111,6 +110,7 @@ export function HomePage() {
                                     }}
                                 />
                                 <button
+                                    aria-label={t('clear_hint')}
                                     className={`join-item btn btn-square btn-outline border-s-0 ${borderColor} focus:${borderColor} hover:bg-transparent`}
                                     onClick={() => {
                                         Track('input', 'clear');

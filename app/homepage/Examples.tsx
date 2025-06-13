@@ -88,7 +88,10 @@ export function Examples({ len, target, random }: ExamplesProps) {
             <ul className="">
                 {examples.map((n) => (
                     <li key={n} className="my-1 flex items-center">
-                        <button className="font-mono flex items-center border border-dotted rounded-md gap-2 p-2 border-base-content/50" onClick={() => {
+                        <button 
+                            aria-label={t('clipboard_hint')}
+                            className="font-mono flex items-center border border-dotted rounded-md gap-2 p-2 border-base-content/50" 
+                            onClick={() => {
                             try {
                                 if (!navigator.clipboard) {
                                     const element = document.createElement("textarea");

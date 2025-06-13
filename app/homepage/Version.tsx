@@ -18,12 +18,12 @@ export function Version() {
     const [statusData, setStatusData] = useState({ commit: '', lastmod: '', tech: '' } as VersionData);
 
     useEffect(() => {
-        console.log('Fetching status data...');
+        console.log('Fetching status...');
         // Fetch the status data from the server
         fetch('/status.json')
             .then(response => response.json())
             .then(data => {
-                console.log('Status data fetched:', data);
+                console.log('Status fetched:', data);
                 setStatusData(data);
             })
             .catch(error => {
@@ -75,21 +75,22 @@ export function Version() {
                 <div className="modal-box flex flex-col gap-0 p-0">
                     <span className="p-3 text-xl font-bold border-b border-neutral/50">{t('version_title')}</span>
 
-                    <table className="mx-3 table-auto border-separate border-spacing-y-3">
-                        <tr>
-                            <td>{t('version_commit')}</td>
-                            <td>{statusData.commit /* LATER: hyperlink to source */}</td>
-                        </tr>
-                        <tr>
-                            <td>{t('version_lastmod')}</td>
-                            <td className="whitespace-nowrap">{statusData.lastmod}</td>
-                        </tr>
-                        <tr>
-                            <td>{t('version_tech')}</td>
-                            <td className="whitespace-nowrap">{statusData.tech}</td>
-                        </tr>
+                    <table className="mx-3 table-auto border-separate border-spacing-y-3" suppressHydrationWarning={true}>
+                        <tbody>
+                            <tr>
+                                <td>{t('version_commit')}</td>
+                                <td>{statusData.commit /* LATER: hyperlink to source */}</td>
+                            </tr>
+                            <tr>
+                                <td>{t('version_lastmod')}</td>
+                                <td className="whitespace-nowrap">{statusData.lastmod}</td>
+                            </tr>
+                            <tr>
+                                <td>{t('version_tech')}</td>
+                                <td className="whitespace-nowrap">{statusData.tech}</td>
+                            </tr>
+                        </tbody>
                     </table>
-
                     <div className="flex justify-center items-center p-3">
                         <button
                             className="btn btn-fiserv w-full"
@@ -98,7 +99,6 @@ export function Version() {
                             }}>{t('settings_close')}</button>
                     </div>
                 </div>
-
                 <form method="dialog" className="modal-backdrop">
                     <button>close</button>
                 </form>
