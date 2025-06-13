@@ -34,6 +34,7 @@
     "settings_locale_en": "Englisch (English)",
     "settings_locale_es": "Spanisch (Español)",
     "settings_locale_fr": "Französisch (Français)",
+    "settings_locale_zh": "Chinesisch (中文)",
     "settings_mode": "Hell/Dunkel Modus",
     "settings_mode_auto": "Automatisch",
     "settings_mode_current": "{{mode}} (aktuell)",

@@ -8,7 +8,9 @@
   "card_unionpay": "银联卡",
   "card_unknown": "未知",
   "card_visa": "VISA卡",
+  "clear_hint": "清除",
   "clipboard_error": "复制到剪贴板时出错",
+  "clipboard_hint": "复制到剪贴板",
   "clipboard_success": "已复制到剪贴板",
   "description": "用于计算通过卢恩算法的数字的辅助页面.",
   "empty_hint": "请输入一个 {{len}} 位数字",
@@ -29,7 +31,7 @@
   "settings_locale": "语言",
   "settings_locale_by": "白俄罗斯语 (Беларуская)",
   "settings_locale_de": "德语 (Deutsch)",
-  "settings_locale_en": "英语",
+  "settings_locale_en": "英语 (English)",
   "settings_locale_es": "西班牙语 (Español)",
   "settings_locale_fr": "法语 (Français)",
   "settings_locale_zh": "中文",
@@ -40,5 +42,9 @@
   "settings_mode_light": "亮色",
   "title": "卢恩校验器",
   "valid_luhn": "太棒了! 该数字通过了卢恩校验!",
+  "version_commit": "提交",
+  "version_lastmod": "最后修改",
+  "version_tech": "技术",
+  "version_title": "版本信息",
   "wikipedia_link": "https://zh.wikipedia.org/wiki/Luhn_algorithm"
 }

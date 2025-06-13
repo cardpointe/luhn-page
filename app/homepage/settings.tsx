@@ -70,6 +70,10 @@ export function Settings() {
     } else if (parsedLen > 20) {
         parsedLen = 20;
     }
+    let formattedLen = new Intl.NumberFormat(i18n.language).format(parsedLen);
+    if (formattedLen.length < 2) {
+        formattedLen = '\u00a0' + formattedLen;
+    }
 
     //const [len, setLen] = React.useState(parsedLen);
 
@@ -101,6 +105,7 @@ export function Settings() {
     };
 
 
+
     const localeComparator = (a: string, b: string) => t(`settings_locale_${a}`).localeCompare(t(`settings_locale_${b}`));
     const sortedLocales = [...locales].sort(localeComparator);
 
@@ -129,7 +134,7 @@ export function Settings() {
                     <div className="p-3">
                         <div className="font-bold pb-2">{t('settings_length')}</div>
                         <div className="flex flex-row items-center ps-3 gap-3">
-                            <span className="font-mono">{parsedLen < 10 ? ' ' : ''}{parsedLen}</span>
+                            <span className="font-mono whitespace-nowrap">{formattedLen}</span>
                         <input id="test" type="range" min="4" max="20" value={parsedLen} className="range [--range-fill:0]"
                         onChange={(e) => { 
                             Track('settings', 'length', `len=${e.target.value}`);
