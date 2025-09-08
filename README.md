@@ -1,4 +1,4 @@
-# Luhn Utility Page
+# Luhn Utility Page [<img alt="luhn logo" src="https://luhn.fiserv.com/favicon.svg" height="90" align="right" />](https://luhn.fiserv.com/)
 
 [![Deploy](https://github.com/cardpointe/luhn-page/actions/workflows/deploy.yaml/badge.svg)](https://github.com/cardpointe/luhn-page/actions/workflows/deploy.yaml)
 
