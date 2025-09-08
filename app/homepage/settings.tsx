@@ -54,7 +54,7 @@ function saveMode(theMode: Mode) {
 }
 
 export function Settings() {
-    const { t, i18n } = useTranslation(); 
+    const { t, i18n } = useTranslation();
 
     const [searchParams, setSearchParams] = useSearchParams();
 
@@ -74,6 +74,9 @@ export function Settings() {
     if (formattedLen.length < 2) {
         formattedLen = '\u00a0' + formattedLen;
     }
+
+	const currentLocale = i18n.language;
+	const ifRandom = searchParams.get("random") === "1";
 
     //const [len, setLen] = React.useState(parsedLen);
 
@@ -136,7 +139,7 @@ export function Settings() {
                         <div className="flex flex-row items-center ps-3 gap-3">
                             <span className="font-mono whitespace-nowrap">{formattedLen}</span>
                         <input id="test" type="range" min="4" max="20" value={parsedLen} className="range [--range-fill:0]"
-                        onChange={(e) => { 
+                        onChange={(e) => {
                             Track('settings', 'length', `len=${e.target.value}`);
 
                             setSearchParams((p) => {
@@ -154,16 +157,17 @@ export function Settings() {
 
                     <div className="p-3">
                         <div className="font-bold pb-2">{t('settings_example')}</div>
-                        
+
                             <div className="flex flex-row items-center ps-4 pb-1"
                                 onClick={() => {
                                     Track('settings', 'fill', 'random');
                                     setSearchParams((p) => {
                                         p.set("random", "1");
                                         return p;
-                                    });    
+                                    });
                                 }}
                             >
+								<input type="radio" className="radio radio-xs me-2" readOnly checked={ifRandom} />
                                 {t('settings_example_random')}
                             </div>
                             <div className="flex flex-row items-center ps-4 pb-1"
@@ -172,9 +176,10 @@ export function Settings() {
                                     setSearchParams((p) => {
                                         p.delete("random");
                                         return p;
-                                    });    
+                                    });
                                 }}
                             >
+								<input type="radio" className="radio radio-xs me-2" readOnly checked={!ifRandom} />
                                 {t('settings_example_same')}
                             </div>
                     </div>
@@ -191,6 +196,7 @@ export function Settings() {
                                     Cookies.set('locale', locale, { expires: 365 });
                                 }}
                             >
+								<input type="radio" className="radio radio-xs me-2" readOnly checked={locale === currentLocale} />
                                 {t(`settings_locale_${locale}`)}
                             </div>
                         ))}
@@ -204,14 +210,14 @@ export function Settings() {
                             key={option.value}
                             onClick={() => {
                                 Track('settings', 'mode', option.value);
-                                setMode(option.value); 
+                                setMode(option.value);
                                 saveMode(option.value);
                             }}
                             >
-                            <option.icon />
+                            <option.icon className={`border-2 border-solid rounded-md ${option.value == currentMode ? 'border-current' : 'border-transparent'}`} size={24}/>
                             <span className="ps-3">{
-                                option.value == currentMode 
-                                    ? t("settings_mode_current", { mode: t(`settings_mode_${option.value}`) }) 
+                                option.value == currentMode
+                                    ? t("settings_mode_current", { mode: t(`settings_mode_${option.value}`) })
                                     : t(`settings_mode_${option.value}`)
                                 }</span>
                         </div>
