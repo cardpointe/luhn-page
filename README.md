@@ -1,7 +1,21 @@
 # Luhn Utility Page
 
-An attractive and ergonomic replacement for random Luhn utility pages ([example](http://www.ee.unb.ca/cgi-bin/tervo/luhn.pl))
+[![Deploy](https://github.com/cardpointe/luhn-page/actions/workflows/deploy.yaml/badge.svg)](https://github.com/cardpointe/luhn-page/actions/workflows/deploy.yaml)
 
+An attractive and ergonomic replacement for generating random Luhn numbers.  It is currently running at [luhn.fiserv.com](https://luhn.fiserv.com/).
+
+## Linking
+
+If you want to link to the page, you can pass the following parameters in the query string:
+
+* `backtext`: alt/a11y text for the exit button
+* `backurl`: url for the exit button
+* `len`: the length of the number to generate
+* `random`: `1` to fill with random digits
+
+## License
+
+[AGPL v3+](LICENSE.txt)
 
 ## Credits
 

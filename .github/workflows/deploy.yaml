@@ -1,4 +1,4 @@
-name: Deploy Next.js site to Pages
+name: Deploy site to Github Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -17,7 +17,7 @@ permissions:
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
