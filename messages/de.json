@@ -1,5 +1,6 @@
 {
     "about": "Der Luhn-Algorithmus ist eine einfache Prüfziffernformel, die zur Validierung verschiedener Identifikationsnummern, einschließlich der meisten Kreditkarten, verwendet wird. Er hilft, versehentliche Fehler in Zahlen, wie z. B. Tippfehler, zu erkennen. (<WikipediaLink>Wikipedia</WikipediaLink>)",
+    "back": "Beenden",
     "card_amex": "American Express",
     "card_diners": "Diners Club",
     "card_discover": "Discover",

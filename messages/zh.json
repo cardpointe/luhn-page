@@ -1,5 +1,6 @@
 {
   "about": "卢恩算法 是一种简单的校验和算法, 一般用于验证身份识别码, 包括大多数信用卡号码. 它有助于检测数字中的偶然错误, 例如输入错误的数字 (<WikipediaLink>Wikipedia</WikipediaLink>)",
+  "back": "退出",
   "card_amex": "美国运通",
   "card_diners": "大来卡",
   "card_discover": "发现卡",

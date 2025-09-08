@@ -10,6 +10,7 @@ import { Settings } from "./settings";
 import { CardType, getCardType } from "./CardType";
 import { Version } from "./Version";
 import { Track } from "../track";
+import { BackButton } from "./BackButton";
 
 
 export function HomePage() {
@@ -34,6 +35,9 @@ export function HomePage() {
     }
     const srandom = searchParams.get("random");
     const random = srandom ? srandom === "1" : false;
+
+	const backUrl = searchParams.get("backurl") ?? "";
+	const backText = searchParams.get("backtext") ?? t('back');
 
     const target = searchParams.get("n") ?? "";
     let hint = "";
@@ -75,6 +79,7 @@ export function HomePage() {
                         <span className="ps-4 font-bold text-xl">{t('title')}</span>
                     </div>
                     <Settings />
+					{backUrl && <BackButton backUrl={backUrl} backText={backText} />}
                 </div>
             </div>
             <div className="flex flex-col grow justify-center items-center pb-7">

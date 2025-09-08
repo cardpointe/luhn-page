@@ -1,5 +1,6 @@
 {
     "about": "El algoritmo de Luhn es una fórmula sencilla de dígitos de control que se utiliza para validar diversos números de identificación, incluyendo la mayoría de las tarjetas de crédito. Ayuda a detectar errores accidentales en los números, como dígitos mal escritos. (<WikipediaLink>Wikipedia</WikipediaLink>)",
+    "back": "Salir",
     "card_amex": "American Express",
     "card_diners": "Diners Club",
     "card_discover": "Discover",
