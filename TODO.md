@@ -15,12 +15,8 @@
 	- [ ] Scandanavian:
 	- [ ] Middle eastern:
 - [ ] use Fiserv's Google Analytics (?or Adobe?)
-- [ ] More instructions for Fiserv ee's in contributing (esp new languages)
 - [ ] Fiserv (orange) theme (or Fiserv-ify light/dark themes)
 - [ ] optional setting to increase number of examples
-- [ ] optional `back` url parameters and toolbar button
-- [ ] languages in a dropdown
-- [ ] radio button-like images next to each option (instead of just bold)
 - [ ] more consistent logos for JCB and UnionPay
 - [ ] Dockerfile - just so others can run w/o installing stuff (NOTE: current one relies on local build)
 
@@ -28,3 +24,4 @@ Glitches:
 - [ ] background behind modals shift due to a non-functional scrollbar
 - [ ] clear button border shifts down by a pixel when pressed
 - [ ] weird footer wrapping on narrow screens (S8)
+- [ ] padding for radio-like light/dark mode buttons
