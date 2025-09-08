@@ -1,0 +1,36 @@
+stages:
+    - deploy
+
+variables:
+    DEPLOY_HOST:
+        description: "The hostname of the server to deploy to (for SSH known_hosts)"
+    DEPLOY_REPO:
+        description: "The `git:` SSH URL of the repo to deploy to"
+    DEPLOY_SSH_KEY:
+        description: "The filename of the SSH private key to use for deployment (from Gitlab Secure Files)"
+
+
+GithubPages:
+    image: debian:trixie
+    rules:
+        - if: '$CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"'
+    stage: deploy
+    script:
+        - apt-get update && apt-get install -y git curl openssh-client
+        - curl --silent "https://gitlab.com/gitlab-org/incubation-engineering/mobile-devops/download-secure-files/-/raw/main/installer" | bash
+        - ls -l ./.secure_files
+        - chmod goa-r ./.secure_files/${DEPLOY_SSH_KEY}
+        - ls -l ./.secure_files
+        - eval $(ssh-agent -s)
+        - ssh-add ./.secure_files/${DEPLOY_SSH_KEY}
+        - mkdir -p ~/.ssh
+        - chmod 0700 ~/.ssh
+        - ssh-keyscan $DEPLOY_HOST >> ~/.ssh/known_hosts
+        - chmod 0600 ~/.ssh/known_hosts
+        - ls -lR
+        - git log
+        - git branch -vv
+        - git remote -vv
+        - git remote add prod ${DEPLOY_REPO} || git remote set-url prod ${DEPLOY_REPO}
+        - git checkout main
+        - git push prod main
