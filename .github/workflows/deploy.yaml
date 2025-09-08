@@ -30,8 +30,12 @@ jobs:
         with:
           node-version: "24"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-      - name: Install dependencies
+      - name: Install npm dependencies
         run: npm install
+      - name: Install OS dependencies
+        run: sudo apt-get update && sudo apt-get install jq moreutils -y
+      - name: Set version info
+        run: bin/set_version.sh
       - name: Build with React Router
         run: npm run build
       - name: Upload artifact

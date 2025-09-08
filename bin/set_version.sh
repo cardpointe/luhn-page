@@ -24,7 +24,7 @@ fi
 
 echo "INFO: checking for sponge"
 if ! command -v sponge &> /dev/null; then
-    echo "ERROR: sponge could not be found, please install it to run this script."
+    echo "ERROR: sponge could not be found, please install it to run this script. It is normally part of the moreutils package."
     exit 3
 fi
 
