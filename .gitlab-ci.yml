@@ -28,9 +28,10 @@ GithubPages:
         - ssh-keyscan $DEPLOY_HOST >> ~/.ssh/known_hosts
         - chmod 0600 ~/.ssh/known_hosts
         - ls -lR
-        - git log
+        - |
+          # WTF? why is it in a detached HEAD state?
+          git status
         - git branch -vv
         - git remote -vv
         - git remote add prod ${DEPLOY_REPO} || git remote set-url prod ${DEPLOY_REPO}
-        - git checkout main
-        - git push -f prod main
+        - git push -f prod HEAD:main
