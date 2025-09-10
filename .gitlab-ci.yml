@@ -33,4 +33,4 @@ GithubPages:
         - git remote -vv
         - git remote add prod ${DEPLOY_REPO} || git remote set-url prod ${DEPLOY_REPO}
         - git checkout main
-        - git push prod main
+        - git push -f prod main
