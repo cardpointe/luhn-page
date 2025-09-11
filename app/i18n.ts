@@ -5,6 +5,7 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
 // the translations
+import translationBN from '../messages/bn.json';
 import translationBY from '../messages/by.json';
 import translationDE from '../messages/de.json';
 import translationEN from '../messages/en.json';
@@ -16,7 +17,7 @@ import translationPT from '../messages/pt.json';
 import translationTR from '../messages/tr.json';
 import translationZH from '../messages/zh.json';
 
-export const locales = ['by', 'de', 'en', 'es', 'fr', 'hi', 'kr', 'pt', 'tr', 'zh']; // LATER: is there a way to get the list from i18n after initialization?
+export const locales = ['bn', 'by', 'de', 'en', 'es', 'fr', 'hi', 'kr', 'pt', 'tr', 'zh']; // LATER: is there a way to get the list from i18n after initialization?
 
 i18n
     // load translation using http -> see /public/locales (i.e. https://github.com/i18next/react-i18next/tree/master/example/react/public/locales)
@@ -42,6 +43,9 @@ i18n
             escapeValue: false, // not needed for react as it escapes by default
         },
         resources: {
+            bn: {
+                translation: translationBN
+            },
             by: {
                 translation: translationBY
             },
