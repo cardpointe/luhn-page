@@ -131,7 +131,7 @@ export function Settings() {
                 open={open}
                 onClose={() => handleClose()}
             >
-                <div className="modal-box w-75 flex flex-col gap-0 p-0">
+                <div className="modal-box w-90 flex flex-col gap-0 p-0">
                     <span className="p-3 text-xl font-bold border-b border-neutral/50">{t('settings')}</span>
 
                     <div className="p-3">
