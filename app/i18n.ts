@@ -23,7 +23,9 @@ import translationTR from '../messages/tr.json';
 import translationVI from '../messages/vi.json';
 import translationZH from '../messages/zh.json';
 
-export const locales = ['bn', 'by', 'de', 'en', 'es', 'fr', 'hi', 'it', 'ja', 'kr', 'mr', 'pt', 'ru', 'tr', 'vi', 'zh']; // LATER: is there a way to get the list from i18n after initialization?
+import translationTE from '../messages/te.json';
+
+export const locales = ['bn', 'by', 'de', 'en', 'es', 'fr', 'hi', 'it', 'ja', 'kr', 'mr', 'pt', 'ru', 'tr', 'vi', 'zh', 'te']; // LATER: is there a way to get the list from i18n after initialization?
 
 i18n
     // load translation using http -> see /public/locales (i.e. https://github.com/i18next/react-i18next/tree/master/example/react/public/locales)
@@ -65,6 +67,7 @@ i18n
             tr: { translation: translationTR },
             vi: { translation: translationVI },
             zh: { translation: translationZH },
+            te: { translation: translationTE },
         },
     });
 
