@@ -2,7 +2,7 @@
   "about": "Luhn algoritması, çok sayıda kimlik numarasını (özellikle kredi kartları) doğrulamak için kullanılan basit bir kontrol basamağı formülüdür. Yanlış tuşlama gibi hatalı girişleri tespit etmeye yardımcı olur. (<WikipediaLink>Vikipedi</WikipediaLink>)",
   "back": "Geri",
   "card_amex": "American Express",
-  "card_diners": "Diner Club",
+  "card_diners": "Diners Club",
   "card_discover": "Discover",
   "card_jcb": "JCB",
   "card_mastercard": "MasterCard",

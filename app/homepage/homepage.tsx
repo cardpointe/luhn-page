@@ -12,6 +12,9 @@ import { Version } from "./Version";
 import { Track } from "../track";
 import { BackButton } from "./BackButton";
 
+// keys that input type=number accepts that we don't want
+const badKeys = new Set([ '+', '-', 'e', '.', ',' ]);
+
 
 export function HomePage() {
 
@@ -113,6 +116,13 @@ export function HomePage() {
                                             setSearchParams((p) => { p.delete("n"); return p });
                                         }
                                     }}
+                                    onKeyDown={(e) => {
+                                        if (badKeys.has(e.key)) {
+                                            e.preventDefault();
+                                            return false;
+                                        }
+                                        return true;
+                                    }}
                                 />
                                 <button
                                     aria-label={t('clear_hint')}
@@ -140,7 +150,7 @@ export function HomePage() {
             <div className="flex justify-center items-center text-xs text-content/50 my-4">
                 <Trans
                     i18nKey="footer"
-                    components={{ DevLink: <a className="ps-1 font-bold" href='https://developer.fiserv.com/' /> }}
+                    components={{ DevLink: <a className="px-1 font-bold" href='https://developer.fiserv.com/' /> }}
                 />
             </div>
         </div>
