@@ -14,10 +14,11 @@ import translationFR from '../messages/fr.json';
 import translationHI from '../messages/hi.json';
 import translationKR from '../messages/kr.json';
 import translationPT from '../messages/pt.json';
+import translationRU from '../messages/ru.json';
 import translationTR from '../messages/tr.json';
 import translationZH from '../messages/zh.json';
 
-export const locales = ['bn', 'by', 'de', 'en', 'es', 'fr', 'hi', 'kr', 'pt', 'tr', 'zh']; // LATER: is there a way to get the list from i18n after initialization?
+export const locales = ['bn', 'by', 'de', 'en', 'es', 'fr', 'hi', 'kr', 'pt', 'ru', 'tr', 'zh']; // LATER: is there a way to get the list from i18n after initialization?
 
 i18n
     // load translation using http -> see /public/locales (i.e. https://github.com/i18next/react-i18next/tree/master/example/react/public/locales)
@@ -69,6 +70,9 @@ i18n
             },
             pt: {
                 translation: translationPT
+            },
+            ru: {
+                translation: translationRU
             },
             tr: {
                 translation: translationTR
