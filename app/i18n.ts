@@ -12,6 +12,7 @@ import translationDE from '../messages/de.json';
 import translationEN from '../messages/en.json';
 import translationES from '../messages/es.json';
 import translationFR from '../messages/fr.json';
+import translationGU from '../messages/gu.json';
 import translationHI from '../messages/hi.json';
 import translationID from '../messages/id.json';
 import translationIT from '../messages/it.json';
@@ -27,7 +28,7 @@ import translationVI from '../messages/vi.json';
 import translationZH from '../messages/zh.json';
 
 
-export const locales = ['bn', 'by', 'de', 'en', 'es', 'fr', 'hi', 'id', 'it', 'ja', 'kr', 'mr', 'pt', 'ru', 'ta', 'te', 'tr', 'vi', 'zh']; // LATER: is there a way to get the list from i18n after initialization?
+export const locales = ['bn', 'by', 'de', 'en', 'es', 'fr', 'gu', 'hi', 'id', 'it', 'ja', 'kr', 'mr', 'pt', 'ru', 'ta', 'te', 'tr', 'vi', 'zh']; // Added 'gu' for Gujarati
 
 i18n
     // load translation using http -> see /public/locales (i.e. https://github.com/i18next/react-i18next/tree/master/example/react/public/locales)
@@ -59,6 +60,7 @@ i18n
             en: { translation: translationEN },
             es: { translation: translationES },
             fr: { translation: translationFR },
+            gu: { translation: translationGU },
             hi: { translation: translationHI },
             id: { translation: translationID },
             it: { translation: translationIT },
