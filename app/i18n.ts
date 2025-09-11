@@ -5,6 +5,7 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
 // the translations
+
 import translationBN from '../messages/bn.json';
 import translationBY from '../messages/by.json';
 import translationDE from '../messages/de.json';
@@ -12,6 +13,7 @@ import translationEN from '../messages/en.json';
 import translationES from '../messages/es.json';
 import translationFR from '../messages/fr.json';
 import translationHI from '../messages/hi.json';
+import translationIT from '../messages/it.json';
 import translationJA from '../messages/ja.json';
 import translationKR from '../messages/kr.json';
 import translationMR from '../messages/mr.json';
@@ -21,7 +23,7 @@ import translationTR from '../messages/tr.json';
 import translationVI from '../messages/vi.json';
 import translationZH from '../messages/zh.json';
 
-export const locales = ['bn', 'by', 'de', 'en', 'es', 'fr', 'hi', 'ja', 'kr', 'mr', 'pt', 'ru', 'tr', 'vi', 'zh']; // LATER: is there a way to get the list from i18n after initialization?
+export const locales = ['bn', 'by', 'de', 'en', 'es', 'fr', 'hi', 'it', 'ja', 'kr', 'mr', 'pt', 'ru', 'tr', 'vi', 'zh']; // LATER: is there a way to get the list from i18n after initialization?
 
 i18n
     // load translation using http -> see /public/locales (i.e. https://github.com/i18next/react-i18next/tree/master/example/react/public/locales)
@@ -47,51 +49,22 @@ i18n
             escapeValue: false, // not needed for react as it escapes by default
         },
         resources: {
-            bn: {
-                translation: translationBN
-            },
-            by: {
-                translation: translationBY
-            },
-            de: {
-                translation: translationDE
-            },
-            en: {
-                translation: translationEN
-            },
-            es: {
-                translation: translationES
-            },
-            fr: {
-                translation: translationFR
-            },
-            hi: {
-                translation: translationHI
-            },
-            ja: {
-                translation: translationJA
-            },
-            kr: {
-                translation: translationKR
-            },
-            mr: {
-                translation: translationMR
-            },
-            pt: {
-                translation: translationPT
-            },
-            ru: {
-                translation: translationRU
-            },
-            tr: {
-                translation: translationTR
-            },
-            vi: {
-                translation: translationVI
-            },
-            zh: {
-                translation: translationZH
-            },
+            bn: { translation: translationBN },
+            by: { translation: translationBY },
+            de: { translation: translationDE },
+            en: { translation: translationEN },
+            es: { translation: translationES },
+            fr: { translation: translationFR },
+            hi: { translation: translationHI },
+            it: { translation: translationIT },
+            ja: { translation: translationJA },
+            kr: { translation: translationKR },
+            mr: { translation: translationMR },
+            pt: { translation: translationPT },
+            ru: { translation: translationRU },
+            tr: { translation: translationTR },
+            vi: { translation: translationVI },
+            zh: { translation: translationZH },
         },
     });
 
